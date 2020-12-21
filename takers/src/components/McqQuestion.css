@@ -1,0 +1,16 @@
+.Question{
+    text-align: left;
+    border-style: solid;
+    margin: 1em;
+    border-radius: 0.2em;
+    border-width: 0em;
+    padding-bottom: 1em;
+    background-color: #ffffff;
+}
+
+.question-text{
+    color: black;
+    padding: 1em;
+    padding-bottom: 3em;
+
+}
