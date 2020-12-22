@@ -3,30 +3,39 @@ import McqAnswerOption from './McqAnswerOption'
 import React, { useState } from 'react';
 
 /*
-I can not see what option is selected right now.
-This is the question object. We generate McqAnswerOption which requires props.choice a/b/c/d and props.selected boolean.
-Onclick, we would change props.selected to true and McqAnswerOptions should do the rest
+This is the question object. It takes in the question and the answer choices and returns the question card with the question
+and answers.
+
+The props to be passed:
+props.choices = string[] choices  which are the mcq choices.
+props.question_text = string question_text which is the question.
+props.selected = char/string selected
 
 To Do:
-1. Figure out how to get the selected answer out.
-2. Pull the MCQAnswerOption choices dynamically.
-3. Pull the answer choices from props.
+1. Figure out how to get the selected up to the parent components.
+This was solved. OptionSelectedStatus right now has the letter stored.
 
 */
-function McqQuestion(){
 
-    const [OptionSelectedStatus, setOptionSelectedStatus] = useState("");
 
+function McqQuestion(props){
+
+    const [OptionSelectedStatus, setOptionSelectedStatus] = useState(props.selected);
+
+    const choices = props.choices;
+
+    
+    const mcqChoices = choices.map((choice, index) =>
+    <McqAnswerOption onClick={() => setOptionSelectedStatus(String.fromCharCode(97 + index))} choice={String.fromCharCode(97 + index)} text={choice} selected={OptionSelectedStatus==String.fromCharCode(97 + index)} />
+    );
+    
 
     return(
 
-        <div class="Question">
-            <div class ="question-text">Imagine there is a serious question typed in here. To be or not to be that is the question?</div>
-            <McqAnswerOption choice="a" text="Answer choice" selected={OptionSelectedStatus=="a"} />
-            <McqAnswerOption choice="b" text="Answer choice" selected={OptionSelectedStatus=="b"} />
-            <McqAnswerOption choice="c" text="Answer choice" selected={OptionSelectedStatus=="c"} />
-            <McqAnswerOption choice="d" text="Answer choice" selected={OptionSelectedStatus=="d"} />
-        </div>
+        <form class="Question">
+            <div class ="question-text">{props.question_text}</div>
+            {mcqChoices}
+        </form>
 
 
     );

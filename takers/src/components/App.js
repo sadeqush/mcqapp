@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <TopPanel/>
       <LeftPanel/>
-      <ExamArea/>
+      <ExamArea exam_id="exam0"/>
     </div>
   );
 }

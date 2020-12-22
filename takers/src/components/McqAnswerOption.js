@@ -18,10 +18,9 @@ function McqAnswerOption(props) {
     
     return (
         
-        <div class = {optionClassname}>
+        <div onClick={props.onClick} class = {optionClassname}>
            <b class ={selectorClassname}>{props.choice}</b>
            <div class ="answer-option-text">{props.text}</div>
-
         </div>
 
     );
