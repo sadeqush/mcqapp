@@ -25,8 +25,8 @@ function ExamArea(props) {
             posInArray++;
         }
 
-        const mcqQuestionList = localQuestionArray.map((question) =>
-        <McqQuestion returnfunc={props.returnF} question_id = {question.id} question_text={question.question_text} choices={question.answer_choices}/>
+        const mcqQuestionList = localQuestionArray.map((thisquestion) =>
+        <McqQuestion returnfunc={props.returnF} question = {thisquestion}/>
         );
         
 

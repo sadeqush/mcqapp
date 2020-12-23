@@ -12,9 +12,16 @@
 
 
 .question-text{
-    color: black;
+    color: #14213D;
     padding: 1em;
     padding-bottom: 3em;
+}
+
+.question-title{
+    font-weight: bold;
+    margin:1em;
+    margin-bottom: 0em;
+    padding-top: 1em;
 }
 
 .Option-selected {

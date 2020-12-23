@@ -23,6 +23,12 @@ function McqQuestion(props) {
 
     const [OptionSelectedStatus, setOptionSelectedStatus] = useState("");
 
+    
+    function updateAnswer(a) {
+        props.returnfunc(props.question.id, a);
+        setOptionSelectedStatus(a)
+    }
+
     function mcqChoiceGeneratingFunc(choice, index) {
 
         var optionClassname = "Option-unselected";
@@ -35,7 +41,7 @@ function McqQuestion(props) {
 
         return (
 
-            <div onClick={() => setOptionSelectedStatus(String.fromCharCode(97 + index))} class={optionClassname}>
+            <div onClick={() => updateAnswer(String.fromCharCode(97 + index))} class={optionClassname}>
                 <b class={selectorClassname}>{String.fromCharCode(97 + index)}</b>
                 <div class="answer-option-text">{choice}</div>
             </div>
@@ -43,22 +49,21 @@ function McqQuestion(props) {
         );
     }
 
-    const choices = props.choices;
+    const choices = props.question.answer_choices;
 
     const mcqChoices = choices.map((choice, index) =>
 
         mcqChoiceGeneratingFunc(choice, index)
 
     );
-    
-    props.returnfunc(props.question_id, OptionSelectedStatus);
 
 
     return (
 
         <Paper class="Question">
             <form class="Question-form">
-                <div class="question-text">{props.question_text}</div>
+                <div class="question-title">{props.question.title}</div>
+                <div class="question-text">{props.question.question_text}</div>
                 {mcqChoices}
             </form>
         </Paper>
