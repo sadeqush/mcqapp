@@ -1,0 +1,27 @@
+.ExamArea {
+
+    position: static;
+    margin-top: 8em;
+}
+
+.add_another_question_button {
+
+    background-color: #FCA311;
+    color: white;
+    border: none;
+    padding: 0.8em;
+    padding-left: 2em;
+    padding-right: 2em;
+    font-weight: bold;
+    border-radius: 0.2em;
+    margin: 1em;
+    cursor: pointer;
+    margin-right: 3em;
+    margin-left: auto;
+  }
+  
+  .add_another_question_button:hover {
+  
+    background-color: #FDAE2F;
+  
+  }
