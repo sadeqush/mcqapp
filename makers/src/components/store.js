@@ -16,18 +16,14 @@ function addQuestionReducer(state = {}, action){
     }
 }
 
-function addAnswerReducer(state = {'answers' : {}}, action){
+function addAnswerReducer(state = {}, action){
+
+    return state;
 
 }
 
-/**
- * @param reducer This is the main reducer function that will join all my customer reducers into one.
- * This needs to be implemented with all my reducers combined into one.
- */
-function reducer(){
-    return combineReducers({addQuestionReducer, addAnswerReducer});
-};
+const reducer = combineReducers({questions: addQuestionReducer, answers: addAnswerReducer});
 
-var store = createStore(addQuestionReducer);
+var store = createStore(reducer);
 
 export default store;

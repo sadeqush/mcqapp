@@ -24,6 +24,8 @@ Things to Do:
 
 function McqQuestion(props) {
 
+    const [cn, setCn] = useState("Option-unselected");
+
     const dispatch = useDispatch();
 
     /**
@@ -122,15 +124,27 @@ function McqQuestion(props) {
     }
 
 
+    //Styling functions.
+    function cngenerator(char){
+        if(char==cn) return "Option-selected";
+        else return "Option-unselected";
+    }
+
+    function selectorcnGenerator(char){
+        if(char==cn) return "selector-selected";
+        else return "selector-unselected";
+    }
+
+
     function mcqChoiceGeneratingFunc() {
 
         return (
             
             <div class = "Opt">
-                <TextField onChange = {e => optionOnInputFunc('a', e.target.value)}  label="Option A" variant="filled" multiline rowsMax={4}/>
-                <TextField onChange = {e => optionOnInputFunc('b', e.target.value)}  label="Option B" variant="filled" multiline rowsMax={4}/>
-                <TextField onChange = {e => optionOnInputFunc('c', e.target.value)}  label="Option C" variant="filled" multiline rowsMax={4}/>
-                <TextField onChange = {e => optionOnInputFunc('d', e.target.value)}  label="Option D" variant="filled" multiline rowsMax={4}/>
+        <InputBase startAdornment={<b class={selectorcnGenerator('a')}>a</b>} onChange = {e => optionOnInputFunc('a', e.target.value)} className={cngenerator('a')} onSelect={ () => setCn("a")} label="Option A"/>
+        <InputBase startAdornment={<b class={selectorcnGenerator('b')}>b</b>} onChange = {e => optionOnInputFunc('b', e.target.value)} className={cngenerator('b')} onSelect={ () => setCn("b")} label="Option B"/>
+        <InputBase startAdornment={<b class={selectorcnGenerator('c')}>c</b>} onChange = {e => optionOnInputFunc('c', e.target.value)} className={cngenerator('c')} onSelect={ () => setCn("c")} label="Option C"/>
+        <InputBase startAdornment={<b class={selectorcnGenerator('d')}>d</b>} onChange = {e => optionOnInputFunc('d', e.target.value)} className={cngenerator('d')} onSelect={ () => setCn("d")} label="Option D"/>
             </div>
 
         );

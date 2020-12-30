@@ -6,31 +6,23 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List'
 import Paper from '@material-ui/core/Paper'
-import { useStore, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 
 function App() {
 
-  const [finish, setFinish] = useState({});
 
   //This variable has all the questions.
-  let Mquestion = useSelector(question => question);
+  let Mquestion = useSelector(store => store.questions);
 
   /**
-   * @param finish
-   * The function gets called on clicking Publish Text. This basically packs everything neatly for the API and eventually call
+   * @param finished
+   * The function gets called on clicking Publish Questions. This packs everything neatly for the API and eventually call
    * call the API to push everything to the website.
    */
-  function finished(examid) {
+  function finished() {
 
-    var setFinishToThis = {};
-    var temp = {};
-    temp['questions'] = {...Mquestion};
-    temp['property'] = {"graded" : true};
-    setFinishToThis["exam"+examid] = {...temp};
-    setFinish(setFinishToThis);
-
-    console.log(finish);
+    console.log(Mquestion);
 
   }
 

@@ -37,14 +37,14 @@
 }
 
 .Option-selected {
-    cursor: pointer;
-    margin: 1em;
-    padding: 1em;
-    padding-left: 0em;
+    margin: auto;
+    margin-top: 1em;
     border-style: solid;
     border-width: 1px;
-    border-color: #018728;
+    border-color: #FCA311;
     text-align: left;
+    border-left: none;
+    width: 100%;
 }
 
 .Opt {
@@ -52,14 +52,14 @@
 }
 
 .Option-unselected {
-    cursor: pointer;
-    margin: 1em;
-    padding: 1em;
-    padding-left: 0em;
+    margin: auto;
+    margin-top: 1em;
     border-style: solid;
     border-width: 1px;
-    border-color:#d9d9d9;
+    border-color: #D9D9D9;
     text-align: left;
+    border-left: none;
+    width: 100%;
 }
 
 
@@ -67,21 +67,25 @@
     display: inline;
     border-style: solid;
     border-width: 1px;
-    border-color: #018728;
-    padding: 1em;
-    padding-right: 0.8em;
-    padding-left: 0.8em;
+    border-color: #FCA311;
+    padding: 0.5em;
+    border-bottom-width: 0px;
+    border-top-width: 0px;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    margin-right: 0.5em;
 }
 
 
 .selector-unselected{
     display: inline;
-    padding: 1em;
     border-style: solid;
-    border-color: #d9d9d9;
     border-width: 1px;
-    padding-right: 0.8em;
-    padding-left: 0.8em;
-    border-left: none;
-    border-bottom: none;
+    border-color: #D9D9D9;
+    padding: 0.5em;
+    border-bottom-width: 0px;
+    border-top-width: 0px;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    margin-right: 0.5em;
 }
