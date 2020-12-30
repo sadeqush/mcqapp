@@ -1,9 +1,10 @@
 import './McqQuestion.css'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Paper, TextField } from '@material-ui/core';
 import InputBase from '@material-ui/core/InputBase';
+import { useDispatch } from 'react-redux';
 
-
+const ADD_QUESTION = 'ADD_QUESTION';
 
 /*
 This is the component that lets the maker create the question, and then stores the question to packedQuestion.
@@ -12,12 +13,9 @@ A basic question has question_text, question.title
 
 Props passed:
 props.id = The Question ID.
-props.returnfunc = The function that gets called with packedQuestion and props.id when everything is done. 
-                    props.returnfunc(props.id, packedQuestion) is the thing that is called.
-
 
 Things to Do:
-1. Send packedQuestion to returnFunction() somewhere in the code.
+1. [OBSOLETE] Send packedQuestion to returnFunction() somewhere in the code.
 2. Design and style the input fields.
 3. Figure out a way to pass the correct answers.
 
@@ -26,9 +24,26 @@ Things to Do:
 
 function McqQuestion(props) {
 
+    const dispatch = useDispatch();
+
+    /**
+     * This function is the action that gets passed to the Redux store.
+     * @param {String} quesid Question ID in the form ques1, ques2, ques3 and onwards. Not an integer.
+     * @param {Object} ques Packed question that gets stored directy into the store, ready for use later on.
+     */
+    function addQuestionAction(quesid, ques){
+
+        var retval = {
+            'type' : ADD_QUESTION,
+            'id' : quesid,
+            'question' : ques
+        };
+
+        return retval;
+    }
+
     
     const [packedQuestion, setPackedQuestion] = useState({});
-    useEffect(()=> props.returnfunc(props.id, packedQuestion));
 
 
     /*These two variables store a local copy of packedQuestion. These variables are first updated with the information from
@@ -44,6 +59,11 @@ function McqQuestion(props) {
             local_question_mcq["answer_choices"] = local_answerChoices_mcq;
         }
 
+        /**
+         * Function that packs Questions.
+         * @param {Boolean} title Boolean isTitle. If the value is a title set to true. If it is question_text, set to false.
+         * @param {String} value Value that would be sent to packed question.
+         */
         function addQuestion(title, value){
 
             if(title){
@@ -67,7 +87,7 @@ function McqQuestion(props) {
         local_question_mcq['id'] = props.id;
         
         setPackedQuestion(local_question_mcq);
-
+        dispatch(addQuestionAction("ques"+props.id, local_question_mcq));
     }
 
     useEffect(() =>fillUpQuestionWithDefault(), []);
@@ -80,6 +100,7 @@ function McqQuestion(props) {
         local_question_mcq["answer_choices"] = local_answerChoices_mcq;
         
         setPackedQuestion(local_question_mcq);
+        dispatch(addQuestionAction("ques"+props.id, local_question_mcq));
 
     }
 
@@ -96,7 +117,8 @@ function McqQuestion(props) {
             local_question_mcq['question_text'] = value;
             setPackedQuestion(local_question_mcq);
         }
-        
+
+        dispatch(addQuestionAction("ques"+props.id, local_question_mcq));
     }
 
 
