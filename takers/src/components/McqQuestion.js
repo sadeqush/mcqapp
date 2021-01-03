@@ -5,17 +5,14 @@ import { useDispatch } from 'react-redux';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 
 /*
-This is the question object. It takes in the question and the answer choices and returns the question card with the question
+This is the question object. It takes in the question and returns the question card with the question
 and answers.
 
 The props to be passed:
-props.choices = string[] choices  which are the mcq choices.
-props.question_text = string question_text which is the question.
-props.question_id = ID of the question. It will be used to keep track of questions and answers.
+props.question = Question object, packed properly.
 
 To Do:
-1. Figure out how to get the selected up to the parent components.
-This was solved. OptionSelectedStatus right now has the letter stored.
+
 
 */
 
@@ -43,6 +40,11 @@ function McqQuestion(props) {
 
     }
 
+    /**
+     * Generates the answer "component", with the proper className.
+     * @param {String} choice The text for the answer choice
+     * @param {char} index One of a/b/c/d 
+     */
     function mcqChoiceGeneratingFunc(choice, index) {
 
         var optionClassname = "Option-unselected";
@@ -78,7 +80,7 @@ function McqQuestion(props) {
             <form class="Question-form">
                 <div class="question-title">
                     <QuestionAnswerIcon style = {{color: "#FCA311", display: "inline-block"}}/>
-                    <span class="question-title">{props.question.title}</span>
+                    <span class="question-title-text">{props.question.title}</span>
                 </div>
                 <div class="question-text">{props.question.question_text}</div>
                 {mcqChoices}

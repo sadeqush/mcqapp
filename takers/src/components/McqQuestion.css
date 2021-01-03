@@ -24,6 +24,11 @@
     margin-bottom: 0em;
     padding-top: 1em;
 }
+.question-title-text{
+    display: "inline-block";
+    margin-left: 1em;
+    margin-top: none;
+}
 
 .Option-selected {
     cursor: pointer;

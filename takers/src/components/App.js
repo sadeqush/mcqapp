@@ -14,7 +14,6 @@ props.exam_id = ID of the exam, passed on from index.js
 */
 
 const ADD_QUESTION = 'ADD_QUESTION';
-const ADD_ANSWER = 'ADD_ANSWER';
 
 function App(props) {
 
@@ -23,7 +22,6 @@ function App(props) {
   var answers = useSelector(state=>state.answers);
 
 
-  const [question, setQuestion] = useState([]);
   const [examProperties, setExamProperties] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -38,7 +36,6 @@ function App(props) {
       .then(res => res.json())
       .then(
         (result) => {
-          setQuestion(result.questions);
           setExamProperties(result.property);
           dispatch({'type' : ADD_QUESTION, 'payload' : result.questions});
           setIsLoaded(true);
@@ -92,7 +89,7 @@ function App(props) {
     return (
 
       <div class="App loading">
-        <CircularProgress></CircularProgress>
+        <CircularProgress style = {{color : "#FCA311"}}></CircularProgress>
       </div>
     )
   }
