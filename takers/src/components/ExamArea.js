@@ -1,35 +1,24 @@
 import McqQuestion from './McqQuestion'
 import React, { useState, useEffect } from 'react';
 import './ExamArea.css'
+import { useSelector } from 'react-redux';
 
 /*
 This is the file that pulls data from the API and renders questions on the screen.
-
-The props to be passed:
-props.questions = key value pair with all the questions.
-props.returnF = Got from App.js passed on to McqQuestion.js, This will store the answers.
 
 Things to do:
 
 */
 
 
-function ExamArea(props) {
-    
-    
-        var localQuestionArray = [];
-        var posInArray = 0;
+function ExamArea() {
 
-        for(var key in props.questions) {
-            localQuestionArray[posInArray] = props.questions[key];
-            posInArray++;
+        var question = useSelector(store => store.questions);
+        let mcqQuestionList = [];
+        for(var key in question) {
+            mcqQuestionList[mcqQuestionList.length] = <McqQuestion question = {question[key]}/>;
         }
-
-        const mcqQuestionList = localQuestionArray.map((thisquestion) =>
-        <McqQuestion returnfunc={props.returnF} question = {thisquestion}/>
-        );
         
-
         return (
             <div className="ExamArea">
                 {mcqQuestionList}

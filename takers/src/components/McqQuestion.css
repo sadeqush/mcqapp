@@ -18,6 +18,7 @@
 }
 
 .question-title{
+    display: "inline-block";
     font-weight: bold;
     margin:1em;
     margin-bottom: 0em;
