@@ -29,6 +29,7 @@
 
 .questionedit {
     display: inline-block;
+    font-size: medium;
 }
 
 .answer-option-text {
@@ -49,6 +50,18 @@
 
 .Opt {
     margin: 1em;
+}
+
+.isanswer-checkbox {
+
+    margin-right: 0.6em;
+    cursor: pointer;
+    height: 25px;
+    width: 25px;
+}
+
+.isanswer-checkbox:checked {
+   background: #FCA311;
 }
 
 .Option-unselected {
@@ -88,4 +101,8 @@
     padding-right: 0.5em;
     padding-left: 0.5em;
     margin-right: 0.5em;
+}
+
+.correct_answer-text{
+    color: #898989;
 }

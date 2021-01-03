@@ -14,6 +14,7 @@ function App() {
 
   //This variable has all the questions.
   let Mquestion = useSelector(store => store.questions);
+  let fullstore = useSelector(store =>store);
 
   /**
    * @param finished
@@ -22,7 +23,7 @@ function App() {
    */
   function finished() {
 
-    console.log(Mquestion);
+    console.log(fullstore);
 
   }
 
@@ -58,10 +59,10 @@ Object.keys(Mquestion).forEach(
 
          {/**Old Left Panel */}
           <Grid item xs={4}>
-            <Paper class="leftPanel">
+            <Paper class="leftPanel" style={{overflowY: 'scroll'}}>
               <div class="answer_quickview">
                 <h4 class="all_question">MCQ Test Options</h4>
-                <List style={{maxHeight: '100%', overflow: 'auto'}} >{listQuestionLeftPanel}</List>
+                <List >{listQuestionLeftPanel}</List>
               </div>
             </Paper>
           </Grid>

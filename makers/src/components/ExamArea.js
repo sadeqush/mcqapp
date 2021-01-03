@@ -10,32 +10,26 @@ The props to be passed:
 Things to do:
 1. Style out the whole thing.
 2. Add a way to record the correct answer.
-
 */
 
 
 function ExamArea() {
 
     const[currentQuesID, setCurrentQuesID] = useState(2);
-    const[mcqQuestionList, setmcqQuestionList] = useState([<McqQuestion id={1}/>]);
-
-
-
-    function generateMCQ(questionid) {
-        return (<McqQuestion id={questionid}/>)
-    }
+    const[mcqQuestionIDList, setmcqQuestionIDList] = useState([1]);
 
 
     function addAnotherQuestion() {
-        setmcqQuestionList(mcqQuestionList.concat(generateMCQ(currentQuesID)));
+        setmcqQuestionIDList(mcqQuestionIDList.concat(currentQuesID));
         setCurrentQuesID(currentQuesID+1);
      }
         
 
     return (
+        
 
         <div className="ExamArea">
-            {mcqQuestionList}
+             {mcqQuestionIDList.map((idi) => <McqQuestion id={idi}/>) }
             <button onClick={()=>addAnotherQuestion()} class="add_another_question_button">+ Add Another Question</button>
         </div> 
 
