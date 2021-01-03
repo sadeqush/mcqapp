@@ -2,6 +2,7 @@ import { createStore, combineReducers } from 'redux'
 
 const ADD_QUESTION = 'ADD_QUESTION';
 const ADD_ANSWER = 'ADD_ANSWER';
+const ADD_PROPERTY = 'ADD_PROPERTY';
 
 function addQuestionReducer(state = {}, action){
 
@@ -10,6 +11,20 @@ function addQuestionReducer(state = {}, action){
     switch(action.type){
 
         case ADD_QUESTION:
+            retval = action.payload;
+            return retval;
+        default:
+            return state;
+    }
+}
+
+function addPropertyReducer(state = {}, action){
+
+    var retval = {};
+
+    switch(action.type)  {
+
+        case ADD_PROPERTY:
             retval = action.payload;
             return retval;
         default:
@@ -31,7 +46,7 @@ function addAnswerReducer(state = {}, action){
     }
 }
 
-const reducer = combineReducers({questions: addQuestionReducer, answers: addAnswerReducer});
+const reducer = combineReducers({questions: addQuestionReducer, answers: addAnswerReducer, property : addPropertyReducer});
 
 var store = createStore(reducer);
 
