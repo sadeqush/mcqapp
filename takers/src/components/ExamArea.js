@@ -14,6 +14,7 @@ Things to do:
 function ExamArea() {
 
         var question = useSelector(store => store.questions);
+
         let mcqQuestionList = [];
         for(var key in question) {
             mcqQuestionList[mcqQuestionList.length] = <McqQuestion question = {question[key]}/>;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-
+import './LeftPanel.css'
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 
 function LeftPanel(props) {
 
@@ -11,7 +12,11 @@ function LeftPanel(props) {
   function QuestionListGeneratingFunc(ques) {
     var quickviewElementclass = "answer_quickview_element_unanswered";
     if(ques.id in answers){quickviewElementclass = "answer_quickview_element_answered"}
-    return(<div class={quickviewElementclass}> {ques.title}</div>);
+    return(
+    <div class={quickviewElementclass}>
+        <span>{ques.title}</span>
+    </div>
+        );
 }
 
 let quesList = [];
@@ -24,9 +29,13 @@ for(var key in questions){
 
     return(
         <div class="leftPanel">
-        <div class="answer_quickview" position="fixed">
-          <h4 class="all_question">Multiple Choice Questions</h4>
+        <div class="leftpanel_quickview" position="fixed">
+          <div class="leftPanel_heading">
+              <span class="leftpanel_heading_element_selected">Assigned</span>
+          </div>
+
           {quesList}
+
         </div>
       </div>
     );

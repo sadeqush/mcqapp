@@ -22,10 +22,9 @@ function App(props) {
   const dispatch = useDispatch();
 
   var answers = useSelector(state=>state.answers);
-
+  var property = useSelector(state=>state.property);
 
   const [isLoaded, setIsLoaded] = useState(false);
-
 
 
   /*The function that does the fetching from the API */
@@ -60,7 +59,7 @@ function App(props) {
           {/**Old Top Panel */}
           <Grid item xs={12}>
             <AppBar style={{background: '#14213D', position: "fixed"}}>
-              <Toolbar><b>ECO181 Homework 3</b>
+              <Toolbar><b>{property['title']}</b>
                 {/*CSS for the submit button is in App.css*/}
                 <button onClick={() => console.log(answers)} class="submit_button">Submit</button>
               </Toolbar>
@@ -85,6 +84,7 @@ function App(props) {
 
   /*This gets rendered when the fetch method is still getting the response from the API call */
   else {
+
     return (
 
       <div class="App loading">
