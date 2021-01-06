@@ -4,16 +4,14 @@ import { Grid } from '@material-ui/core';
 import React, { useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List'
-import Paper from '@material-ui/core/Paper'
 import { useSelector } from 'react-redux';
+import LeftPanel from './LeftPanel'
 
 
 function App() {
 
 
   //This variable has all the questions.
-  let Mquestion = useSelector(store => store.questions);
   let fullstore = useSelector(store =>store);
 
   /**
@@ -26,19 +24,6 @@ function App() {
     console.log(fullstore);
 
   }
-
-  function QuestionListGeneratingFunc(ques) {
-    var quickviewElementclass = "answer_quickview_element_answered";
-    return(<li class={quickviewElementclass}> {ques.title}</li>);
-}
-
-var listQuestionLeftPanel = [];
-
-Object.keys(Mquestion).forEach(
-  function(key){
-    listQuestionLeftPanel[listQuestionLeftPanel.length] = QuestionListGeneratingFunc(Mquestion[key]);
-  });
-
 
 
     return (
@@ -59,12 +44,7 @@ Object.keys(Mquestion).forEach(
 
          {/**Old Left Panel */}
           <Grid item xs={4}>
-            <Paper class="leftPanel" style={{overflowY: 'scroll'}}>
-              <div class="answer_quickview">
-                <h4 class="all_question">MCQ Test Options</h4>
-                <List >{listQuestionLeftPanel}</List>
-              </div>
-            </Paper>
+              <LeftPanel/>
           </Grid>
 
 

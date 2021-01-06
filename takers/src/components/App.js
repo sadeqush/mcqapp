@@ -14,17 +14,17 @@ props.exam_id = ID of the exam, passed on from index.js
 */
 
 const ADD_QUESTION = 'ADD_QUESTION';
+const ADD_PROPERTY = 'ADD_PROPERTY';
+
 
 function App(props) {
 
   const dispatch = useDispatch();
 
   var answers = useSelector(state=>state.answers);
+  var property = useSelector(state=>state.property);
 
-
-  const [examProperties, setExamProperties] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
-
 
 
   /*The function that does the fetching from the API */
@@ -36,7 +36,7 @@ function App(props) {
       .then(res => res.json())
       .then(
         (result) => {
-          setExamProperties(result.property);
+          dispatch({'type' : ADD_PROPERTY, 'payload' : result.property});
           dispatch({'type' : ADD_QUESTION, 'payload' : result.questions});
           setIsLoaded(true);
         }
@@ -53,14 +53,13 @@ function App(props) {
     return (
 
       <div className="App">
-
         <Grid container spacing={0} display="inline">
 
 
           {/**Old Top Panel */}
           <Grid item xs={12}>
             <AppBar style={{background: '#14213D', position: "fixed"}}>
-              <Toolbar><b>ECO181 Homework 3</b>
+              <Toolbar><b>{property['title']}</b>
                 {/*CSS for the submit button is in App.css*/}
                 <button onClick={() => console.log(answers)} class="submit_button">Submit</button>
               </Toolbar>
@@ -79,13 +78,13 @@ function App(props) {
           </Grid>
 
         </Grid>
-
       </div>
     );
   }
 
   /*This gets rendered when the fetch method is still getting the response from the API call */
   else {
+
     return (
 
       <div class="App loading">

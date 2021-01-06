@@ -1,9 +1,8 @@
 import './McqQuestion.css'
 import React, { useState, useEffect, useContext } from 'react';
-import { Paper, TextField, Checkbox} from '@material-ui/core';
+import { Paper, TextField, Checkbox, FormGroup} from '@material-ui/core';
 import InputBase from '@material-ui/core/InputBase';
 import { useDispatch } from 'react-redux';
-import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 
 const ADD_QUESTION = 'ADD_QUESTION';
@@ -64,7 +63,7 @@ function McqQuestion(props) {
 
     
     const [packedQuestion, setPackedQuestion] = useState({});
-    const [packedAnswer, setPackedAnswer] = useState({});
+    const [packedAnswer, setPackedAnswer] = useState([]);
 
 
     /*These two variables store a local copy of packedQuestion. These variables are first updated with the information from
@@ -72,7 +71,7 @@ function McqQuestion(props) {
 
     let local_question_mcq = {};
     let local_answerChoices_mcq =  {};
-    let local_correct_answer = {};
+    var local_correct_answer = [];
 
     /**
      * When a new question is created, fillUpWithDefault gets called, and it fills up the Redux store with defaults for new Questions.
@@ -116,9 +115,7 @@ function McqQuestion(props) {
         dispatch(addQuestionAction("ques"+props.id, local_question_mcq));
 
         //These are for the answers
-        local_correct_answer['ques'+props.id] = '';
-        setPackedAnswer(local_correct_answer);
-        dispatch(addAnswerAction("ques"+props.id, local_correct_answer));
+        dispatch(addAnswerAction("ques"+props.id, ''));
 
     }
 
@@ -159,42 +156,31 @@ function McqQuestion(props) {
      */
     function checkb(checkBox_id){
         
-        if(cn==checkBox_id){
         return(
             <Checkbox
             disableRipple={true}
             onClick={(e)=>recordAnswer(checkBox_id, e)}
             style={{ color: "#FCA311"}}
-            name="option"
             icon={<CheckBoxIcon fontSize="small" style={{color: '#D9D9D9'}} />}
             checkedIcon={<CheckBoxIcon fontSize="small" />}
           />
           );
-
-        }
-        else {
-            return(
-                <Checkbox
-                disableRipple={true}
-                onClick={(e)=>recordAnswer(checkBox_id, e)}
-                style={{ color: "#FCA311"}}
-                name="option"
-                icon={<CheckBoxIcon fontSize="small" style={{ color: "#D9D9D9"}}/>}
-                checkedIcon={<CheckBoxIcon fontSize="small" />}
-              />
-            );
-        }
     }
 
     function recordAnswer(checkBox_id, event){
         //This if statement checks if the checkbox is being checked or unchecked. We ignore if being unchecked.
         if(event.target.checked){
 
-            local_correct_answer = {...packedAnswer};
-            local_correct_answer['ques'+props.id] = checkBox_id;
+            local_correct_answer = packedAnswer;
+            local_correct_answer.push(checkBox_id);
             setPackedAnswer(local_correct_answer);
-            
-            dispatch(addAnswerAction("ques"+props.id, local_correct_answer));
+            dispatch(addAnswerAction("ques"+props.id, checkBox_id));
+        }
+        else {
+            local_correct_answer = packedAnswer;
+            local_correct_answer.pop();
+            setPackedAnswer(local_correct_answer);
+            dispatch(addAnswerAction("ques"+props.id, local_correct_answer[local_correct_answer.length-1]));
         }
 
     }
@@ -216,12 +202,14 @@ function McqQuestion(props) {
 
         return (
             
-            <div class = "Opt">
-        <InputBase endAdornment={checkb('a')} startAdornment={<b class={selectorcnGenerator('a')}>a</b>} onChange = {e => optionOnInputFunc('a', e.target.value)} className={cngenerator('a')} onSelect={ () => setCn("a")} label="Option A"/>
-        <InputBase endAdornment={checkb('b')} startAdornment={<b class={selectorcnGenerator('b')}>b</b>} onChange = {e => optionOnInputFunc('b', e.target.value)} className={cngenerator('b')} onSelect={ () => setCn("b")} label="Option B"/>
-        <InputBase endAdornment={checkb('c')} startAdornment={<b class={selectorcnGenerator('c')}>c</b>} onChange = {e => optionOnInputFunc('c', e.target.value)} className={cngenerator('c')} onSelect={ () => setCn("c")} label="Option C"/>
-        <InputBase endAdornment={checkb('d')} startAdornment={<b class={selectorcnGenerator('d')}>d</b>} onChange = {e => optionOnInputFunc('d', e.target.value)} className={cngenerator('d')} onSelect={ () => setCn("d")} label="Option D"/>
-            </div>
+        <div class = "Opt">
+            <FormGroup>
+            <InputBase endAdornment={checkb('a')} startAdornment={<b className={selectorcnGenerator('a')}>a</b>} onChange = {e => optionOnInputFunc('a', e.target.value)} className={cngenerator('a')} onFocus={ () => setCn("a")} onBlur={()=>setCn("")} label="Option A"/>
+            <InputBase endAdornment={checkb('b')} startAdornment={<b className={selectorcnGenerator('b')}>b</b>} onChange = {e => optionOnInputFunc('b', e.target.value)} className={cngenerator('b')} onFocus={ () => setCn("b")} onBlur={()=>setCn("")} label="Option B"/>
+            <InputBase endAdornment={checkb('c')} startAdornment={<b className={selectorcnGenerator('c')}>c</b>} onChange = {e => optionOnInputFunc('c', e.target.value)} className={cngenerator('c')} onFocus={ () => setCn("c")} onBlur={()=>setCn("")} label="Option C"/>
+            <InputBase endAdornment={checkb('d')} startAdornment={<b className={selectorcnGenerator('d')}>d</b>} onChange = {e => optionOnInputFunc('d', e.target.value)} className={cngenerator('d')} onFocus={ () => setCn("d")} onBlur={()=>setCn("")} label="Option D"/>
+            </FormGroup>
+        </div>
 
         );
     }

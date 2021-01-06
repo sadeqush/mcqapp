@@ -1,0 +1,71 @@
+.leftPanel_heading{
+    border-bottom: #e5e5e5;
+    border-bottom-style: solid;
+    border-width: 1px;
+    margin: 2em;
+    margin-bottom: 0em;
+    padding-bottom: 1em;
+    
+  }
+
+  .leftpanel_heading_element{
+    cursor: pointer;
+    padding: 1em;
+    font-weight: bold;
+  }
+
+  .leftpanel_heading_element:hover{
+    padding: 1em;
+    border-bottom: #FCA311;
+    border-bottom-style: solid;
+}
+
+  .leftpanel_heading_element_selected{
+    cursor: pointer;
+    padding: 1em;
+    font-weight: bold;
+    border-bottom: #FCA311;
+    border-bottom-style: solid;
+    background-color: #FFF3E1;
+}
+  
+  
+  .leftPanel{
+    background-color: white;
+    border-style: solid;
+    border-color: white;
+    height: 100%;
+    width: 33%;
+    position: fixed;
+    text-align: left;
+  }
+  
+  .leftpanel_quickview {
+    margin-top: 6em;
+    width: 100%;
+  }
+  
+  .answer_quickview_element_unanswered{
+    padding: 1em;
+    padding-left: 4em;
+    margin: 0em;
+    background-color: #FFF3E1;
+  
+  }
+  
+  .answer_quickview_element_answered{
+    padding: 1em;
+    padding-left: 4em;
+    margin: 0em;
+    color: black;
+    background-color:white;
+  }
+
+  .leftpanel_title_changer{
+      margin: 1em;
+      padding-left: 0.8em;
+  }
+  .exam_option_text{
+      margin: 1.1em;
+      padding-top: 4em;
+  }
