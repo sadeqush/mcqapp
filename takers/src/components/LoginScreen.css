@@ -1,0 +1,52 @@
+.LoginScreen {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: smaller;
+    flex-grow: 1;
+  }
+
+  .button {
+
+    background-color: #FCA311;
+    color: white;
+    border: none;
+    padding: 0.8em;
+    padding-left: 2em;
+    padding-right: 2em;
+    font-weight: bold;
+    border-radius: 0.2em;
+    margin: 1em;
+    cursor: pointer;
+    margin-right: 3em;
+    margin-left: auto;
+  }
+  
+  .button:hover {
+  
+    background-color: #FDAE2F;
+  
+  }
+
+  .id_text {
+      border-width: 1px;
+      border-style: solid;
+      border-color: #D9D9D9;
+      background-color: white;
+      margin: 1em;
+      padding: 0.1em;
+      margin-top: 20em;
+      padding-left: 0.6em;
+      border-radius: 0.2em;
+  }
+
+  .id_text_selected {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #FDAE2F;
+    background-color: white;
+    margin: 1em;
+    padding: 0.1em;
+    margin-top: 20em;
+    padding-left: 0.6em;
+    border-radius: 0.2em;
+}

@@ -4,6 +4,8 @@ import { Paper, TextField, Checkbox, FormGroup} from '@material-ui/core';
 import InputBase from '@material-ui/core/InputBase';
 import { useDispatch } from 'react-redux';
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
+import {Editor, EditorState} from 'draft-js';
+import 'draft-js/dist/Draft.css';
 
 const ADD_QUESTION = 'ADD_QUESTION';
 const ADD_ANSWER = 'ADD_ANSWER';
@@ -17,10 +19,6 @@ Props passed:
 props.id = The Question ID.
 
 Things to Do:
-1. [OBSOLETE] Send packedQuestion to returnFunction() somewhere in the code.
-2. Design and style the input fields.
-3. Figure out a way to pass the correct answers.
-
 */
 
 
@@ -29,6 +27,11 @@ function McqQuestion(props) {
     const [cn, setCn] = useState("Option-unselected");
 
     const dispatch = useDispatch();
+
+    const [editorState, setEditorState] = React.useState(
+        () => EditorState.createEmpty(),);
+    
+    const [editorClassname, setEditorClassname] = useState("question-text");
 
     /**
      * This function is the action that gets passed to the Redux store.
@@ -133,19 +136,18 @@ function McqQuestion(props) {
 
     }
 
-    function questionOnInputFunc(title, value) {
+    function titleOnInputFunc(value){
+        local_question_mcq = {...packedQuestion};
+        local_question_mcq['title'] = value;
+        setPackedQuestion(local_question_mcq);
+    }
 
-        if(title){
-            local_question_mcq = {...packedQuestion};
-            local_question_mcq['title'] = value;
-            setPackedQuestion(local_question_mcq);
-        }
+    function questionOnInputFunc(value) {
 
-        else {
+            setEditorState(value);
             local_question_mcq = {...packedQuestion};
-            local_question_mcq['question_text'] = value;
+            local_question_mcq['question_text'] = value.getCurrentContent().getPlainText();
             setPackedQuestion(local_question_mcq);
-        }
 
         dispatch(addQuestionAction("ques"+props.id, local_question_mcq));
     }
@@ -224,18 +226,17 @@ function McqQuestion(props) {
                 <a class = "editpencil">✎</a>
                 <InputBase class = "questionedit"
                     autoComplete = "off"
-                    onChange = {e => questionOnInputFunc(true, e.target.value)}
+                    onChange = {e => titleOnInputFunc(e.target.value)}
                     defaultValue={"Question "+props.id}
                     inputProps = {{"maxlength": 40}}/>
                 
 
-                <div class="question-text">
-                    <TextField style={{}} onChange = {e => questionOnInputFunc(false, e.target.value)} variant="outlined" fullWidth="true" label="Type your question"></TextField>
+                <div className={editorClassname}>
+                    <Editor placeholder="Add details to your Question"  editorState={editorState} onChange={questionOnInputFunc} onFocus={() => setEditorClassname("question-text-selected")} onBlur={() => setEditorClassname("question-text")}/>
                 </div>
+
                 <div class="correct_answer-text"></div>
                 {mcqChoiceGeneratingFunc()}
-
-
             </form>
             
         </Paper>
