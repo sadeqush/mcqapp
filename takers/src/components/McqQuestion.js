@@ -47,18 +47,19 @@ function McqQuestion(props) {
      */
     function mcqChoiceGeneratingFunc(choice, index) {
 
+
         var optionClassname = "Option-unselected";
         var selectorClassname = "selector-unselected";
 
-        if (OptionSelectedStatus == String.fromCharCode(97 + index)) {
+        if (OptionSelectedStatus == index) {
             optionClassname = "Option-selected";
             selectorClassname = "selector-selected";
         }
 
         return (
 
-            <div onClick={() => updateAnswer(String.fromCharCode(97 + index))} class={optionClassname}>
-                <b class={selectorClassname}>{String.fromCharCode(97 + index)}</b>
+            <div onClick={() => updateAnswer(index)} class={optionClassname}>
+                <b class={selectorClassname}>{index}</b>
                 <div class="answer-option-text">{choice}</div>
             </div>
 
@@ -66,12 +67,12 @@ function McqQuestion(props) {
     }
 
     const choices = props.question.answer_choices;
+    const mcqChoices = [];
 
-    const mcqChoices = choices.map((choice, index) =>
+    for (var index in choices) {
+        mcqChoices[mcqChoices.length] = mcqChoiceGeneratingFunc(choices[index], index);
+    }
 
-        mcqChoiceGeneratingFunc(choice, index)
-
-    );
 
 
     return (

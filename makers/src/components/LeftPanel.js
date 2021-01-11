@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import List from '@material-ui/core/List';
 import Paper from '@material-ui/core/Paper';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './LeftPanel.css';
 import { InputBase, TextField } from '@material-ui/core';
 
 function LeftPanel() {
 
-    const ADD_TITLE  = 'ADD_TITLE';
+    const dispatch = useDispatch();
 
     const[selectedHeader, setSelectedHeader] = useState("question");
     /**
@@ -21,10 +21,21 @@ function LeftPanel() {
         );
         else return(
         <div>
-            <span>Change your exam options. Changing your title is strongly recommended.</span>
-            <InputBase className="leftpanel_title_changer" style={{borderStyle: "solid", borderWidth: "1px", borderColor: "orange"}}></InputBase>
+            <InputBase className="leftpanel_title_changer" onChange={(e)=> titleOnChange(e.target.value)} placeholder="Exam Title" style={{borderStyle: "solid", borderWidth: "1px", borderColor: "#d9d9d9"}}></InputBase>
         </div>
         );
+    }
+
+    function addTitleAction(target){
+        return {
+            type : "ADD_TITLE",
+            id : "title",
+            value : target
+        }
+    }
+
+    function titleOnChange(value){
+        dispatch(addTitleAction(value));
     }
 
     /**

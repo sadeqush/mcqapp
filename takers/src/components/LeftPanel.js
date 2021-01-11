@@ -32,6 +32,7 @@ for(var key in questions){
         <div class="leftpanel_quickview" position="fixed">
           <div class="leftPanel_heading">
               <span class="leftpanel_heading_element_selected">Assigned</span>
+              <span class="leftpanel_heading_element">Results</span>
           </div>
 
           {quesList}

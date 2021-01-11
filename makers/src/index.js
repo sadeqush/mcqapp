@@ -14,8 +14,9 @@ var test = false;
 if(test){
 
   ReactDOM.render(
+    <Provider store={store}>
 <React.StrictMode><TestComponent></TestComponent>
-</React.StrictMode>, document.getElementById('root')
+</React.StrictMode></Provider>, document.getElementById('root')
   );
 }
 

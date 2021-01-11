@@ -32,10 +32,12 @@ function App(props) {
 
     var url = "https://mcq-app-6cef8-default-rtdb.firebaseio.com/test/exams/" + examID + ".json";
 
+    console.log(url, "URL")
     fetch(url)
       .then(res => res.json())
       .then(
         (result) => {
+          console.log(result);
           dispatch({'type' : ADD_PROPERTY, 'payload' : result.property});
           dispatch({'type' : ADD_QUESTION, 'payload' : result.questions});
           setIsLoaded(true);
@@ -68,12 +70,12 @@ function App(props) {
 
 
          {/**Old Left Panel */}
-          <Grid item xs={4} style={{overflowY: 'scroll'}}>
+          <Grid item xs={0} md={4} style={{overflowY: 'scroll'}}>
             <LeftPanel/>
           </Grid>
 
 
-          <Grid item xs={8}>
+          <Grid item xs={12} md={8}>
             <ExamArea/>
           </Grid>
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './components/index.css';
-import App from './components/App';
+import LoginScreen from './components/LoginScreen'
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux'
 import store from './components/store'
@@ -9,7 +9,7 @@ import store from './components/store'
 ReactDOM.render(
   <Provider store={store}>
   <React.StrictMode>
-    <App exam_id="exam0" />
+    <LoginScreen />
   </React.StrictMode>
   </Provider>,
   document.getElementById('root')
