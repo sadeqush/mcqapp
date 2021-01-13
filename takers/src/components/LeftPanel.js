@@ -9,9 +9,9 @@ function LeftPanel(props) {
     var questions = useSelector(store => store.questions);
 
 
-  function QuestionListGeneratingFunc(ques) {
+  function QuestionListGeneratingFunc(ques, ques_id) {
     var quickviewElementclass = "answer_quickview_element_unanswered";
-    if(ques.id in answers){quickviewElementclass = "answer_quickview_element_answered"}
+    if(ques_id in answers){quickviewElementclass = "answer_quickview_element_answered"}
     return(
     <div class={quickviewElementclass}>
         <span>{ques.title}</span>
@@ -22,7 +22,7 @@ function LeftPanel(props) {
 let quesList = [];
 
 for(var key in questions){
-    quesList[quesList.length] = QuestionListGeneratingFunc(questions[key]);
+    quesList[quesList.length] = QuestionListGeneratingFunc(questions[key], key);
   }
 
 
