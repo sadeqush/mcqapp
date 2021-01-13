@@ -17,7 +17,7 @@ function ExamArea() {
 
         let mcqQuestionList = [];
         for(var key in question) {
-            mcqQuestionList[mcqQuestionList.length] = <McqQuestion question = {question[key]}/>;
+            mcqQuestionList[mcqQuestionList.length] = <McqQuestion question = {question[key]} question_id = {key}/>;
         }
         
         return (

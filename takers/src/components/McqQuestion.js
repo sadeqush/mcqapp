@@ -10,6 +10,7 @@ and answers.
 
 The props to be passed:
 props.question = Question object, packed properly.
+props.question_id =  ID of the question, pulled as "key" of the question object from the API, in the store.
 
 To Do:
 
@@ -31,7 +32,7 @@ function McqQuestion(props) {
         dispatch(
             {
                 "type" : ADD_ANSWER,
-                "id" : props.question.id,
+                "id" : props.question_id,
                 "answer" : a
             }
         );
