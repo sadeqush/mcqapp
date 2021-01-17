@@ -70,7 +70,7 @@ function App(props) {
 
 
          {/**Old Left Panel */}
-          <Grid item xs={0} md={4} style={{overflowY: 'scroll'}}>
+          <Grid item xs={0} md={4} >
             <LeftPanel/>
           </Grid>
 

@@ -7,25 +7,6 @@
     padding-bottom: 1em;
     
   }
-
-  .leftpanel_heading_element{
-    cursor: pointer;
-      padding: 1em;
-  }
-
-  .leftpanel_heading_element:hover{
-    padding: 1em;
-    border-bottom: #FCA311;
-    border-bottom-style: solid;
-}
-
-  .leftpanel_heading_element_selected{
-    cursor: pointer;
-    padding: 1em;
-    font-weight: bold;
-    border-bottom: #FCA311;
-    border-bottom-style: solid;
-}
   
   
   .leftPanel{
@@ -58,3 +39,24 @@
     color: black;
     background-color:white;
   }
+
+  .leftpanel_heading_element{
+    cursor: pointer;
+    padding: 1em;
+    font-weight: bold;
+  }
+
+  .leftpanel_heading_element:hover{
+    padding: 1em;
+    border-bottom: #FCA311;
+    border-bottom-style: solid;
+}
+
+  .leftpanel_heading_element_selected{
+    cursor: pointer;
+    padding: 1em;
+    font-weight: bold;
+    border-bottom: #FCA311;
+    border-bottom-style: solid;
+    background-color: #FFF3E1;
+}

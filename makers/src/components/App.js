@@ -4,10 +4,9 @@ import { Grid, Hidden } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import LeftPanel from './LeftPanel'
-import store from './store';
-import axios from "axios";
+import {SubmitTest} from "./api";
 
 const ADD_ID = 'ADD_ID';
 
@@ -15,7 +14,6 @@ function App() {
 
   const[isLoaded, setIsLoaded] = useState(false);
   const[examID, setExamID] = useState("");
-
 
 
   async function onInitialLoad(){
@@ -51,9 +49,6 @@ function App() {
 
   useEffect(()=>onInitialLoad(), []);
 
-  //This variable has all the questions.
-  let fullstore = useSelector(store =>store);
-  
   const dispatch = useDispatch();
 
   function addExamIDAction(value) {
@@ -68,26 +63,13 @@ function App() {
     
   }
 
-  /**
-   * @param finished
-   * The function gets called on clicking Publish Questions. This packs everything neatly for the API and eventually call
-   * call the API to push everything to the website.
-   */
-  async function finished() {
 
-    var axiosObject = {} 
-    axiosObject[examID] = {questions : {...fullstore.questions}, property : {...fullstore.property}};
-
-    var axiosAnswerObject = {}
-    axiosAnswerObject[examID] = {...fullstore.answers};
-
-    try {
-      await axios.patch('https://mcq-app-6cef8-default-rtdb.firebaseio.com/test/exams.json', axiosObject);
-      await axios.patch('https://mcq-app-6cef8-default-rtdb.firebaseio.com/test/answers.json', axiosAnswerObject);
-    } catch (e) {
-      console.log(e);
-    }
-
+/**
+ * Calls submittest from API.js
+ * Adds a syntheic wait to make the user thing something is actually going on.
+ */
+  async function Finished() {
+    SubmitTest();
   }
 
 /**
@@ -138,7 +120,7 @@ function App() {
                 {"Exam ID : " + examID}
                 </b>
                 {/*CSS for the submit button is in App.css*/}
-                <button onClick={() => finished(3)} class="submit_button">Publish Test</button>
+                <button onClick={() => Finished(3)} class="submit_button">Publish Test</button>
               </Toolbar>
             </AppBar>
           </Grid>

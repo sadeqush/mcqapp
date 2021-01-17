@@ -25,13 +25,17 @@ Things to Do:
 function McqQuestion(props) {
 
     const [cn, setCn] = useState("Option-unselected");
+    const [editorClassname, setEditorClassname] = useState("question-text");
+    const [packedQuestion, setPackedQuestion] = useState({});
+    const [packedAnswer, setPackedAnswer] = useState([]);
 
     const dispatch = useDispatch();
+
 
     const [editorState, setEditorState] = React.useState(
         () => EditorState.createEmpty(),);
     
-    const [editorClassname, setEditorClassname] = useState("question-text");
+    
 
     /**
      * This function is the action that gets passed to the Redux store.
@@ -64,9 +68,6 @@ function McqQuestion(props) {
         return retval;
     }
 
-    
-    const [packedQuestion, setPackedQuestion] = useState({});
-    const [packedAnswer, setPackedAnswer] = useState([]);
 
 
     /*These two variables store a local copy of packedQuestion. These variables are first updated with the information from
