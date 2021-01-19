@@ -4,8 +4,9 @@ import { Paper, TextField, Checkbox, FormGroup} from '@material-ui/core';
 import InputBase from '@material-ui/core/InputBase';
 import { useDispatch } from 'react-redux';
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
-import {Editor, EditorState} from 'draft-js';
-import 'draft-js/dist/Draft.css';
+import {EditorState} from 'draft-js';
+
+import QuestionEditor from './QuestionEditor';
 
 const ADD_QUESTION = 'ADD_QUESTION';
 const ADD_ANSWER = 'ADD_ANSWER';
@@ -233,7 +234,7 @@ function McqQuestion(props) {
                 
 
                 <div className={editorClassname}>
-                    <Editor placeholder="Add details to your Question"  editorState={editorState} onChange={questionOnInputFunc} onFocus={() => setEditorClassname("question-text-selected")} onBlur={() => setEditorClassname("question-text")}/>
+                <QuestionEditor editorState={editorState} onChange={questionOnInputFunc} onFocus={setEditorClassname} onBlur={setEditorClassname}/>
                 </div>
 
                 <div class="correct_answer-text"></div>

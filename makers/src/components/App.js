@@ -6,7 +6,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import { useDispatch } from 'react-redux';
 import LeftPanel from './LeftPanel'
-import {SubmitTest} from "./api";
+import {SubmitTest, getExamID} from "./api";
 
 const ADD_ID = 'ADD_ID';
 
@@ -18,29 +18,7 @@ function App() {
 
   async function onInitialLoad(){
     
-    var id = "";
-    var isAlright = false;
-
-    //Generates an id, checks if it already exists in DB, and then assigns this Exam an ID.
-    while(!isAlright){
-      id = randomIDGenerator();
-      var url = "https://mcq-app-6cef8-default-rtdb.firebaseio.com/test/exams/" + id + ".json";
-
-      await fetch(url)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          if(result==null)
-          isAlright = true;
-        }
-      )
-    }
-
-    var axiosObject = {};
-    axiosObject[id] = "";
-
-    //Reserve spot here.
-
+    var id = await getExamID();
     setExamID(id);
     dispatch(addExamIDAction(id));
     setIsLoaded(true);
@@ -68,42 +46,8 @@ function App() {
  * Calls submittest from API.js
  * Adds a syntheic wait to make the user thing something is actually going on.
  */
-  async function Finished() {
+  function Finished() {
     SubmitTest();
-  }
-
-/**
- * Function generates unique Exam ID with 2 letters, followed by 4 numbers ie AB1234 or XC3223
- * Takes Date.now() as seed. Over 6.7 Million possible unique identifiers.
- * The output can be used as Exam key, but should never be used for authentication.
- * Reengineer this eventually.
- */
-  function randomIDGenerator(){
-
-    var retval = "";
-
-    var seed = Date.now();
-    seed = seed%87889091;
-
-    //Generating a 8 digit number if its not 8 digits.
-    while(seed<10000000){
-      var random = Math.floor(Math.random() * 10) + 1;
-      seed=seed*random;
-    }
-
-    //Seed's first two digits mod 26, added to retval
-    var temp = Math.floor((seed / 1000000) % 100)
-    retval = String.fromCharCode(65+Math.floor(temp%26));
-
-    //Second two digits mod 26, added to retval
-    temp = Math.floor((seed / 10000) % 100);
-    retval = retval + String.fromCharCode(65+Math.floor(temp%26));
-
-    //Adding last 4 digits to retval.
-    temp = Math.floor(seed%10000);
-    retval = retval + temp;
-
-    return retval;
   }
 
 

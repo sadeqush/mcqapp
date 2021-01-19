@@ -9,7 +9,7 @@ import store from './components/store'
 ReactDOM.render(
   <Provider store={store}>
   <React.StrictMode>
-    <LoginScreen />
+    <LoginScreen/>
   </React.StrictMode>
   </Provider>,
   document.getElementById('root')

@@ -7,15 +7,18 @@ import { Provider } from 'react-redux'
 import store from './components/store'
 
 
+import LoginPage from './components/LoginPage'
+
+
 //Test Imports
 import TestComponent from "./components/testComponent"
-var test = false;
+var test = true;
 
 if(test){
 
   ReactDOM.render(
     <Provider store={store}>
-<React.StrictMode><TestComponent></TestComponent>
+<React.StrictMode><LoginPage></LoginPage>
 </React.StrictMode></Provider>, document.getElementById('root')
   );
 }
@@ -25,8 +28,9 @@ else{
 ReactDOM.render(
   <Provider store={store}>
   <React.StrictMode>
-    <App exam_id="exam0" />
-  </React.StrictMode>
+
+<App exam_id="exam0" />
+ </React.StrictMode>
   </Provider>,
   document.getElementById('root')
 );

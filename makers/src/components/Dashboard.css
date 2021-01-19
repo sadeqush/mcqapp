@@ -1,0 +1,15 @@
+.Dashboard{
+    background-color: #e5e5e5;
+    text-align: center;
+}
+
+.Exam-card {
+    background-color: white;
+    min-width: min-content;
+    min-height: min-content;
+    max-width: 70em;
+    height: 10em;
+    margin-top: 4em;
+    margin-left: auto;
+    margin-right: auto;
+}

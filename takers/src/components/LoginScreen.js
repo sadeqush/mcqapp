@@ -7,11 +7,11 @@ function LoginScreen() {
 
     const[ID, setID] = useState("LW6623");
     const[ready, setReady] = useState(false)
-    const[inputCN, setInputCN] = useState("id_text")
+    const[inputCN, setInputCN] = useState("id_text");      
 
     if(!ready) return(
 
-        <div className="LoginScreen">
+        <div className="LoginScreen" id="App">
         <InputBase className={inputCN} onChange={(e)=>setID(e.target.value) } placeholder="Input Exam ID" onFocus={(e) => setInputCN("id_text_selected")} onBlur={(e) => setInputCN("id_text")}/>
         <button className="button" onClick={()=>setReady(true)}>Go to Exam!</button>
         </div>

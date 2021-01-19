@@ -51,6 +51,7 @@ function addPropertyReducer(state = {}, action){
 
 }
 
+
 const reducer = combineReducers({questions: addQuestionReducer, answers: addAnswerReducer, property : addPropertyReducer});
 
 var store = createStore(reducer);

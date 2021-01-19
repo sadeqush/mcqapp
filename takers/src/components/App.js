@@ -7,6 +7,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import LeftPanel from './LeftPanel';
 import { useDispatch, useSelector } from 'react-redux';
+import {getExam} from './api';
 
 /*
 
@@ -19,34 +20,30 @@ const ADD_PROPERTY = 'ADD_PROPERTY';
 
 function App(props) {
 
+  var property = useSelector(state=>state.property);
+
   const dispatch = useDispatch();
 
-  var answers = useSelector(state=>state.answers);
-  var property = useSelector(state=>state.property);
+  setInterval( checkFocus, 200 );
+
+  function checkFocus(){
+    if(document.hasFocus()==false){
+      //Do some checking and raise a red flag if this runs during an exam.
+    }
+  }
 
   const [isLoaded, setIsLoaded] = useState(false);
 
 
-  /*The function that does the fetching from the API */
-  function getExam(examID) {
-
-    var url = "https://mcq-app-6cef8-default-rtdb.firebaseio.com/test/exams/" + examID + ".json";
-
-    console.log(url, "URL")
-    fetch(url)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          console.log(result);
-          dispatch({'type' : ADD_PROPERTY, 'payload' : result.property});
-          dispatch({'type' : ADD_QUESTION, 'payload' : result.questions});
-          setIsLoaded(true);
-        }
-      )
+  async function onLoadFunc(examID) {
+    var exam = await getExam(examID);
+    dispatch({'type' : ADD_PROPERTY, 'payload' : exam.property});
+    dispatch({'type' : ADD_QUESTION, 'payload' : exam.questions});
+    setIsLoaded(true);
   }
 
   useEffect(() => {
-    getExam(props.exam_id);
+    onLoadFunc(props.exam_id);
   }, []);
 
 
@@ -54,7 +51,7 @@ function App(props) {
 
     return (
 
-      <div className="App">
+      <div className="App" id="App">
         <Grid container spacing={0} display="inline">
 
 
@@ -63,7 +60,7 @@ function App(props) {
             <AppBar style={{background: '#14213D', position: "fixed"}}>
               <Toolbar><b>{property['title']}</b>
                 {/*CSS for the submit button is in App.css*/}
-                <button onClick={() => console.log(answers)} class="submit_button">Submit</button>
+                <button onClick={() => console.log("answers")} class="submit_button">Submit</button>
               </Toolbar>
             </AppBar>
           </Grid>
