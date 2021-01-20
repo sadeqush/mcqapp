@@ -1,8 +1,7 @@
 .LoginPage {
   width: 100%;
   min-height: 100vh;
-  text-align: center;
-  background-color: #e5e5e5;
+  background: var(--gray);
 
   display: grid;
   place-items: center;
@@ -10,10 +9,10 @@
 
 .LoginForm {
   width: 90%;
-  max-width: 15em;
-  min-height: 10em;
-  padding: 2em 1.5em 3em 1.5em;
-  background: #14213d;
+  max-width: 30rem;
+  min-height: 15em;
+  padding: 2rem 1.5rem 3rem 1.5rem;
+  background: var(--blue);
 
   display: flex;
   flex-direction: column;
@@ -22,50 +21,53 @@
 }
 
 .LoginForm-avatar {
-  width: 5em;
-  height: 5em;
-  margin-bottom: 1em;
+  width: 9rem;
+  height: 9rem;
+  margin-bottom: 2rem;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
 }
 
 .id_text {
-  border: 1px solid #d9d9d9;
-  background-color: white;
+  border: 2px solid var(--white);
+  background: var(--white);
   width: 100%;
-  margin: 0.5em 0;
-  padding: 0.25em 0.75em;
-  padding-top: 0.35em;
+  margin: 0.6rem 0;
+  padding: 0.1rem 0.75rem;
+  transition: border var(--transition);
 }
 
 .id_text_selected {
-  border: 1px solid #fdae2f;
-  background-color: white;
+  border: 2px solid var(--yellow);
+  background: var(--white);
   width: 100%;
-  margin: 0.5em 0;
-  padding: 0.25em 0.75em;
-  padding-top: 0.35em;
+  margin: 0.6rem 0;
+  padding: 0.1rem 0.75rem;
+  transition: border var(--transition);
+}
+.id_text input,
+.id_text_selected input {
+  font-size: 1.5rem;
 }
 
 .button {
-  background-color: #fca311;
-  color: white;
-  border: none;
+  background: var(--yellow-light);
+  color: var(--white);
   width: 100%;
-  margin: 0.5em 0;
-  padding: 0.8em 2em;
+  margin: 0.6rem 0;
+  padding: 1.1rem 1rem;
   font-weight: bold;
-  cursor: pointer;
+  transition: background var(--transition);
 }
 
 .button:hover {
-  background-color: #fdae2f;
+  background: var(--yellow);
 }
 
 /* The bar on top of Register button */
 .LoginForm-bar {
   width: 100%;
-  height: 0.05em;
-  background: white;
-  margin: 1em 0;
+  height: 0.1rem;
+  background: var(--white);
+  margin: 1.5rem 0;
 }
