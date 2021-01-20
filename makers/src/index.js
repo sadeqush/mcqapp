@@ -1,40 +1,36 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './components/index.css';
-import App from './components/App';
-import reportWebVitals from './reportWebVitals';
-import { Provider } from 'react-redux'
-import store from './components/store'
+import React from "react";
+import ReactDOM from "react-dom";
+import "./components/index.css";
+import App from "./components/App";
+import reportWebVitals from "./reportWebVitals";
+import { Provider } from "react-redux";
+import store from "./components/store";
+import "font-awesome/css/font-awesome.min.css";
 
-
-import LoginPage from './components/LoginPage'
-
+import LoginPage from "./components/Dashboard";
 
 //Test Imports
-import TestComponent from "./components/testComponent"
+import TestComponent from "./components/testComponent";
 var test = true;
 
-if(test){
-
+if (test) {
   ReactDOM.render(
     <Provider store={store}>
-<React.StrictMode><LoginPage></LoginPage>
-</React.StrictMode></Provider>, document.getElementById('root')
+      <React.StrictMode>
+        <LoginPage></LoginPage>
+      </React.StrictMode>
+    </Provider>,
+    document.getElementById("root")
   );
-}
-
-else{
-
-ReactDOM.render(
-  <Provider store={store}>
-  <React.StrictMode>
-
-<App exam_id="exam0" />
- </React.StrictMode>
-  </Provider>,
-  document.getElementById('root')
-);
-
+} else {
+  ReactDOM.render(
+    <Provider store={store}>
+      <React.StrictMode>
+        <App exam_id='exam0' />
+      </React.StrictMode>
+    </Provider>,
+    document.getElementById("root")
+  );
 }
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
