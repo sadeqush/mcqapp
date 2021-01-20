@@ -11,6 +11,7 @@
 }
 
 html {
+  /* 10px ? it's a trick. to get 250px just write 25rem. */
   font-size: 10px;
   font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",

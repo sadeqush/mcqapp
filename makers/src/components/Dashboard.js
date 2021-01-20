@@ -87,6 +87,6 @@ export default Dashboard;
 */
 
 /*
-1. fixed the drawer to the left with a width of 20rem/200px.
-2. 
+1. fixed the drawer to the left with a width of 22.5rem/225px.
+2. added the initial layout of Dashboard
 */
