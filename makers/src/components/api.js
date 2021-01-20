@@ -143,7 +143,7 @@ export async function register(email, password){
 export default function logout(){
   firebaseApp.auth().signOut().then(() => {
     return true;
-  }).catch((error) => {
+  }).catch((e) => {
     console.log(e);
   });
 
