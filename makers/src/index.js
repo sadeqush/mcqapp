@@ -1,17 +1,23 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./components/index.css";
-import App from "./components/App";
-import reportWebVitals from "./reportWebVitals";
-import { Provider } from "react-redux";
-import store from "./components/store";
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './components/index.css';
+import App from './components/App';
+import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux'
+import store from './components/store'
 import "font-awesome/css/font-awesome.min.css";
+import {firebaseInit} from './components/api'
+
+
 
 import LoginPage from "./components/Dashboard";
+
 
 //Test Imports
 import TestComponent from "./components/testComponent";
 var test = true;
+
 
 if (test) {
   ReactDOM.render(
