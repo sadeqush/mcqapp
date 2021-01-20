@@ -5,21 +5,24 @@ import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux'
 import store from './components/store'
+import {firebaseInit} from './components/api'
 
 
 import LoginPage from './components/LoginPage'
-
 
 //Test Imports
 import TestComponent from "./components/testComponent"
 var test = true;
 
+firebaseInit();
 if(test){
-
   ReactDOM.render(
     <Provider store={store}>
-<React.StrictMode><LoginPage></LoginPage>
-</React.StrictMode></Provider>, document.getElementById('root')
+      <React.StrictMode>  
+        <LoginPage>
+        </LoginPage>
+      </React.StrictMode>
+  </Provider>, document.getElementById('root')
   );
 }
 

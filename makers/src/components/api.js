@@ -1,23 +1,31 @@
 import axios from "axios";
 import store from "./store";
-//import firebase from "firebase/app";
-//import "firebase/auth";
-//import "firebase/firestore";
+import firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
 
-  /**
-   * @param finished
-   * The function gets called on clicking Publish Questions. This packs everything neatly for the API and eventually call
-   * call the API to push everything to the website.
-   */
 
 
 const bcrypt = require("bcryptjs");
+var firebaseApp;
 
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBZJSwfTnrIyFFfyUx-wb_U8sAU3zlEokw",
+  authDomain: "mcq-app-6cef8.firebaseapp.com",
+  databaseURL: "https://mcq-app-6cef8-default-rtdb.firebaseio.com",
+  projectId: "mcq-app-6cef8",
+  storageBucket: "mcq-app-6cef8.appspot.com",
+  messagingSenderId: "40587533414",
+  appId: "1:40587533414:web:727305c796e72ee0de61a7"
+};
+
+
+export async function firebaseInit(){
+  firebaseApp = firebase.initializeApp(firebaseConfig);
+}
 
 export async function SubmitTest() {
-
-
-
 
     var fullstore = store.getState();
     var examID = fullstore.property.examID;
@@ -36,7 +44,6 @@ export async function SubmitTest() {
     }
 
 }
-
 /**
  * Function returns an exam ID is guranteed unique.
  */
@@ -101,59 +108,44 @@ export async function getExamID(){
     return id;
 }
 
+export async function login(email, password){
 
-/**
- * Function called with username and password to login a user
- */
-export async function login(username, password){
+  firebase.auth().signInWithEmailAndPassword(email, password)
+  .then((user) => {
+    console.log(user, "Logged In");
+    return user;
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+  });
 
-  var axiosObject = await axios.get('https://mcq-app-6cef8-default-rtdb.firebaseio.com/test/passwords/'+username+'.json');
-  var hash = axiosObject.data;
+}
 
-  var logedIn = bcrypt.compareSync(password, hash);
-  console.log(logedIn);
+export async function register(email, password){
+
+  firebaseApp.auth().createUserWithEmailAndPassword(email, password)
+  .then((user) => {
+
+    console.log(user);
+    return user;
+  })
+  .catch((error) => {
+    console.log(error)
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // ..
+  });
 
 }
 
 
-/**
- * Function called with username and password to register user
- */
-export async function register(username, password){
+export default function logout(){
+  firebaseApp.auth().signOut().then(() => {
+    return true;
+  }).catch((error) => {
+    console.log(e);
+  });
 
-    var shouldBeNull = await axios.get('https://mcq-app-6cef8-default-rtdb.firebaseio.com/test/users/'+username+'.json');
-
-    if(shouldBeNull.data==null){
-
-      var passwordObject = {};
-      var salt = bcrypt.genSaltSync(10);
-
-      var hash = bcrypt.hashSync(password, salt);
-
-      passwordObject[username] = hash ;
-
-      var axiosObject = {};
-      axiosObject[username] = {"time_created" : Date.now()};
-    
-      try{
-        await axios.patch('https://mcq-app-6cef8-default-rtdb.firebaseio.com/test/passwords.json', passwordObject);
-        await axios.patch('https://mcq-app-6cef8-default-rtdb.firebaseio.com/test/users.json', axiosObject);
-
-        console.log("Registration Successful");
-        return true;
-      }
-      catch(e){
-        console.log(e);
-      }
-
-    }
-
-    else{
-      throw console.error("Username Exists");
-    }
-
-
-
+  return false;
 }
-
-

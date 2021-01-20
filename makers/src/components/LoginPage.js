@@ -3,18 +3,27 @@ import "./LoginPage.css";
 import InputBase from "@material-ui/core/InputBase";
 import { login, register } from "./api";
 
+
+/*
+1. Moved the input elements into a form.
+2. className='LoginPage' has 100% width & 100% height, display grid to place the form always centered.
+3. all the elements inside the form has some margin & padding.
+*/
 function LoginPage() {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailCN, setEmailCN] = useState("id_text");
   const [pwCN, setPWCN] = useState("id_text");
 
   function processLogin() {
-    login(username, password);
+    //Do Some email validation
+    var user = await login(email, password);
   }
 
   function processRegister() {
-    register(username, password);
+
+    //Do some email validation
+    var user = await register(email, password);
   }
 
   return (
@@ -29,7 +38,7 @@ function LoginPage() {
         {/* Input elements */}
         <InputBase
           className={emailCN}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
           placeholder='Username'
           onFocus={(e) => setEmailCN("id_text_selected")}
           onBlur={(e) => setEmailCN("id_text")}
@@ -43,13 +52,13 @@ function LoginPage() {
           onBlur={(e) => setPWCN("id_text")}
         />
 
-        <button className='button' onClick={processLogin}>
+        <button className='button' type="button" onClick={()=>{processLogin()}}>
           Login
         </button>
 
         <div className='LoginForm-bar'></div>
 
-        <button className='button' onClick={processRegister}>
+        <button className='button' type="button" onClick={()=>{processRegister()}}>
           Register
         </button>
       </form>
@@ -58,9 +67,3 @@ function LoginPage() {
 }
 
 export default LoginPage;
-
-/*
-1. Moved the input elements into a form.
-2. className='LoginPage' has 100% width & 100% height, display grid to place the form always centered.
-3. all the elements inside the form has some margin & padding.
-*/
