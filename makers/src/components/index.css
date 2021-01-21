@@ -28,6 +28,8 @@ html {
   --yellow: #fca311;
   --yellow-light: #fdae2f;
   --yellow-lighter: #fdba4d;
+  --green: #52b788;
+  --red: #fc1130;
   --radius-full: 50%;
   --radius-min: 0.5rem;
   --transition: 0.3s linear;
@@ -43,6 +45,7 @@ body {
 .container {
   width: 95%;
   max-width: 1200px;
+  height: 100%;
   margin: auto;
 }
 

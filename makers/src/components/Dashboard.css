@@ -67,7 +67,8 @@
   background: var(--yellow);
 }
 
-/* Boards */
+/* Boards 
+**********************************************/
 .Dashboard-content {
   width: calc(70% + 22.5rem);
   min-height: 100vh;
@@ -87,7 +88,7 @@
 .Dashboard-content .header button {
   background: var(--yellow);
   color: var(--white);
-  padding: 0.75rem 1.25rem;
+  padding: 0.8rem 1.25rem 0.75rem 1.25rem;
   font-size: 1.6rem;
   transition: background var(--transition);
   display: flex;
@@ -106,51 +107,3 @@
   margin: auto;
   min-height: 25rem;
 }
-
-.Dashboard-board {
-  background: var(--white);
-  min-height: 5rem;
-  padding: 1.25rem 2rem;
-  margin-bottom: 2rem;
-
-  display: flex;
-  justify-content: space-between;
-}
-
-.Dashboard-board .board-content p {
-  font-size: 1.3rem;
-}
-
-.Dashboard-board .board-settings {
-  align-self: flex-end;
-}
-
-.Dashboard-board .board-settings .button {
-  background: transparent;
-  padding: 0.5rem 1rem;
-  color: var(--yellow-lighter);
-  font-size: inherit;
-}
-.Dashboard-board .board-settings .button:hover {
-  background: var(--yellow-light);
-  color: var(--white);
-}
-
-.Dashboard-board .board-settings .button span {
-  margin-left: 0.5rem;
-}
-
-.Dashboard-board .board-settings .button.edit {
-  font-weight: bolder;
-}
-
-/* .Exam-card {
-  background-color: white;
-  min-width: min-content;
-  min-height: min-content;
-  max-width: 70em;
-  height: 10em;
-  margin-top: 4em;
-  margin-left: auto;
-  margin-right: auto;
-} */

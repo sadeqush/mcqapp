@@ -1,94 +1,78 @@
-import './App.css';
-import ExamArea from './ExamArea';
-import { Grid, Hidden } from '@material-ui/core';
-import React, { useEffect, useState } from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import { useDispatch } from 'react-redux';
-import LeftPanel from './LeftPanel'
-import {SubmitTest, getExamID} from "./api";
+import "./App.css";
+import ExamArea from "./ExamArea";
+import { Grid, Hidden } from "@material-ui/core";
+import React, { useEffect, useState } from "react";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import { useDispatch } from "react-redux";
+import { SubmitTest, getExamID } from "./api";
 
-const ADD_ID = 'ADD_ID';
+const ADD_ID = "ADD_ID";
 
 function App() {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [examID, setExamID] = useState("");
 
-  const[isLoaded, setIsLoaded] = useState(false);
-  const[examID, setExamID] = useState("");
-
-
-  async function onInitialLoad(){
-    
+  async function onInitialLoad() {
     var id = await getExamID();
     setExamID(id);
     dispatch(addExamIDAction(id));
     setIsLoaded(true);
-
   }
 
-  useEffect(()=>onInitialLoad(), []);
+  useEffect(() => onInitialLoad(), []);
 
   const dispatch = useDispatch();
 
   function addExamIDAction(value) {
-
-    return(
-      {
-        'type' : ADD_ID,
-        'id' : "examID",
-        'value' : value
-      }
-    )
-    
+    return {
+      type: ADD_ID,
+      id: "examID",
+      value: value,
+    };
   }
 
-
-/**
- * Calls submittest from API.js
- * Adds a syntheic wait to make the user thing something is actually going on.
- */
+  /**
+   * Calls submittest from API.js
+   * Adds a syntheic wait to make the user thing something is actually going on.
+   */
   function Finished() {
-    SubmitTest();
+    //SubmitTest();
   }
 
+  if (isLoaded)
+    return (
+      <div class='App'>
+        {/**Header  ***********/}
+        <header className='header'>
+          <div className='container'>
+            <p>
+              <b>{"Exam ID : " + examID}</b>
+            </p>
 
-    if(isLoaded) return (
+            <button onClick={() => Finished(3)} class='submit_button'>
+              Publish Test
+            </button>
+          </div>
+        </header>
 
-      <div class="App">
-        <Grid container spacing={0} display="inline">
-
-          {/**Old Top Panel */}
-          <Grid item xs={12}>
-            <AppBar style={{background: '#14213D', position: "fixed"}}>
-              <Toolbar>
-                <b>
-                {"Exam ID : " + examID}
-                </b>
-                {/*CSS for the submit button is in App.css*/}
-                <button onClick={() => Finished(3)} class="submit_button">Publish Test</button>
-              </Toolbar>
-            </AppBar>
-          </Grid>
-
-
-         {/**Old Left Panel */}
-          <Grid item xs={0} md={4}>
-              <LeftPanel/>
-          </Grid>
-
-
-          <Grid item xs={12} md={8}>
-            <ExamArea/>
-          </Grid>
-
-        </Grid>
-
+        {/* Exam making area **************/}
+        <div className='exams'>
+          <div className='container'>
+            <ExamArea />
+          </div>
+        </div>
       </div>
     );
-
-    else return(
-    "Loading"
-    );
-  }
-
+  else return "Loading";
+}
 
 export default App;
+
+/*
+1. Removed LeftPanel
+2. Replaced Appbar with header element
+3. ExamArea will be inside a box which will have display:flex
+
+
+*/

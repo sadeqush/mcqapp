@@ -1,6 +1,7 @@
 import { AppBar, Toolbar } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import "./Dashboard.css";
+import Exam from "./Dashboard-exam";
 
 function Dashboard() {
   return (
@@ -49,26 +50,10 @@ function Dashboard() {
 
         {/* All the exams *********/}
         <div className='Dashboard-boards'>
-          <div className='Dashboard-board'>
-            <div className='board-content'>
-              <h3>ECO 486: Homework Quiz 5</h3>
-              <p>
-                Created: <span>16 January, 2021</span>{" "}
-              </p>
-              <p>40 Multiple Choice Questions</p>
-            </div>
-            <div className='board-settings'>
-              <button className='button edit'>
-                <i className='fa fa-edit'></i>
-                <span>Edit</span>
-              </button>
-              <button className='button'>
-                <i className='fa fa-trash'></i>
-                <span>Delete</span>
-              </button>
-            </div>
-          </div>
-          {/* single board/box ends */}
+          <Exam />
+          <Exam />
+          <Exam />
+          <Exam />
         </div>
       </div>
     </div>
@@ -78,15 +63,6 @@ function Dashboard() {
 export default Dashboard;
 
 /*
-<AppBar style={{ background: "#14213D", position: "fixed" }}>
-        <Toolbar></Toolbar>
-      </AppBar>
-
-      <div className='Exam-card' position='fixed'></div>
-      <div className='Exam-card' position='fixed'></div>
-*/
-
-/*
 1. fixed the drawer to the left with a width of 22.5rem/225px.
-2. added the initial layout of Dashboard
+2. The Exam will come from Dashboard-exam.js which will get data from the api
 */

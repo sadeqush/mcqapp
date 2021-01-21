@@ -1,75 +1,43 @@
 .App {
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-  font-size: smaller;
-  flex-grow: 1;
+  width: 100%;
+  min-height: 100vh;
+  background: var(--gray);
 }
 
+/*   Header 
+*******************************/
+.App .header {
+  background: var(--blue);
+  color: var(--white);
+  height: 6rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.App .header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .submit_button {
-
-  background-color: #FCA311;
-  color: white;
-  border: none;
-  padding: 0.8em;
-  padding-left: 2em;
-  padding-right: 2em;
+  background-color: var(--yellow);
+  color: var(--white);
+  padding: 0.75rem 1rem;
   font-weight: bold;
-  border-radius: 0.2em;
-  margin: 1em;
-  cursor: pointer;
-  margin-right: 3em;
-  margin-left: auto;
+  transition: background var(--transition);
 }
 
 .submit_button:hover {
-
-  background-color: #FDAE2F;
-
+  background-color: var(--yellow-light);
 }
 
-.loading{
-  
+.loading {
   margin-top: 10em;
 }
 
-.leftPanel{
-  background-color: white;
-  border-style: solid;
-  border-color: white;
-  height: 100%;
-  min-width: 33%;
-  position: fixed;
-  text-align: left;
-}
-
-.answer_quickview {
-  margin-top: 6em;
-}
-
-
-.all_question{
-  border-bottom: #e5e5e5;
-  border-bottom-style: solid;
-  border-width: 1px;
-  margin: 2em;
-  margin-bottom: 0em;
-  padding-bottom: 1em;
-  
-}
-
-.answer_quickview_element_unanswered{
-  padding: 1em;
-  padding-left: 4em;
-  margin: 0em;
-  background-color: #FFF3E1;
-
-}
-
-.answer_quickview_element_answered{
-  padding: 1em;
-  padding-left: 4em;
-  margin: 0em;
-  color: black;
-  background-color:white;
+.App .exams {
+  margin-top: 6rem;
 }
