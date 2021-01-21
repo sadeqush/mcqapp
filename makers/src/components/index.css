@@ -45,6 +45,7 @@ body {
 .container {
   width: 95%;
   max-width: 1200px;
+  height: 100%;
   margin: auto;
 }
 
