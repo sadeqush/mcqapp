@@ -9,17 +9,30 @@
 .Dashboard-drawer {
   background: var(--blue);
   color: var(--white);
-  width: 22.5rem;
+  width: 30rem;
   height: 100vh;
   padding: 1rem 0;
 
   position: fixed;
   top: 0;
-  left: 0;
+  position: relative;
+  z-index: 999;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.Dashboard-drawer .toggle-close {
+  /* border: 1px solid currentColor; */
+  padding: 0.5rem 1rem;
+  position: absolute;
+  top: 4.5%;
+  left: 1rem;
+  background: transparent;
+  color: var(--white);
+  font-size: 2rem;
+  display: none;
 }
 
 .Dashboard-drawer .welcome {
@@ -70,9 +83,8 @@
 /* Boards 
 **********************************************/
 .Dashboard-content {
-  width: calc(70% + 22.5rem);
+  width: calc(70% + 30rem);
   min-height: 100vh;
-  margin-left: 22.5rem;
 }
 
 .Dashboard-content .header {
@@ -83,9 +95,20 @@
 
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
-.Dashboard-content .header button {
+
+.Dashboard-content .header .toggle-menu {
+  border: 1px solid var(--yellow);
+  background: transparent;
+  padding: 0.5rem 1.25rem;
+  padding-top: 0.75rem;
+  font-size: 2rem;
+  color: var(--yellow);
+  visibility: hidden;
+}
+
+.Dashboard-content .header .create-new {
   background: var(--yellow);
   color: var(--white);
   padding: 0.8rem 1.25rem 0.75rem 1.25rem;
@@ -94,7 +117,7 @@
   display: flex;
   align-items: center;
 }
-.Dashboard-content .header button:hover {
+.Dashboard-content .header .create-new:hover {
   background: var(--yellow-light);
 }
 .Dashboard-content .header button span {
@@ -106,4 +129,29 @@
   max-width: 80rem;
   margin: auto;
   min-height: 25rem;
+}
+
+/*    RESPONSIVE  
+***************************************/
+
+@media screen and (max-width: 500px) {
+  .Dashboard-drawer {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    transition: left var(--transition);
+  }
+
+  .Dashboard-drawer .toggle-close {
+    display: block;
+  }
+
+  .Dashboard-content {
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  .Dashboard-content .header .toggle-menu {
+    visibility: visible;
+  }
 }

@@ -12,7 +12,7 @@ import {firebaseInit} from './components/api'
 
 import LoginPage from "./components/LoginPage";
 
-import LoginPage from "./components/App";
+import LoginPage from "./components/Dashboard";
 
 //Test Imports
 import TestComponent from "./components/testComponent";

@@ -4,11 +4,26 @@ import "./Dashboard.css";
 import Exam from "./Dashboard-exam";
 
 function Dashboard() {
+  const [toggleDrawer, setToggleDrawer] = useState(true);
+  const toggleDrawerHandler = () =>
+    toggleDrawer ? setToggleDrawer(false) : setToggleDrawer(true);
+  // const toggleOpenDrawerHandler = () =>
+  //   toggleDrawer ? setToggleDrawer(false) : null;
+
+  console.log(toggleDrawer);
+
+  let pushLeft;
+  toggleDrawer ? (pushLeft = { left: "0rem" }) : (pushLeft = { left: "-100%" });
+
   return (
     <div className='Dashboard'>
       {/* Drawer *********************/}
-      <div className='Dashboard-drawer'>
+      <div className='Dashboard-drawer' style={pushLeft}>
         <div>
+          <button className='toggle-close' onClick={toggleDrawerHandler}>
+            <i className='fa fa-times'></i>
+            <span className='sr-only'>Close Drawer</span>
+          </button>
           <div className='welcome'>
             <img
               className='user-avatar'
@@ -22,7 +37,7 @@ function Dashboard() {
             </p>
           </div>
           <div className='tabs'>
-            <i class='fa fa-user-circle'></i>
+            <i className='fa fa-user-circle'></i>
             <span>Profile</span>
           </div>
           <div className='tabs active'>
@@ -42,7 +57,12 @@ function Dashboard() {
       {/* Exam boards ******************/}
       <div className='Dashboard-content'>
         <div className='header'>
-          <button>
+          <button className='toggle-menu' onClick={toggleDrawerHandler}>
+            <i className='fa fa-bars'></i>
+            <span className='sr-only'>Toggle Drawer Menu</span>
+          </button>
+
+          <button className='create-new'>
             <i className='fa fa-plus-square'></i>
             <span>Create New Exam</span>
           </button>
