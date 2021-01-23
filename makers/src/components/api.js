@@ -1,4 +1,3 @@
-import { TrendingUpOutlined } from "@material-ui/icons";
 import axios from "axios";
 import store from "./store";
 

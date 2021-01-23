@@ -6,11 +6,6 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import store from "./components/store";
 import "font-awesome/css/font-awesome.min.css";
-import {firebaseInit} from './components/api'
-
-
-
-import LoginPage from "./components/LoginPage";
 
 import LoginPage from "./components/Dashboard";
 
@@ -27,7 +22,9 @@ if (test) {
     </Provider>,
     document.getElementById("root")
   );
-} else {
+}
+
+else {
   ReactDOM.render(
     <Provider store={store}>
       <React.StrictMode>
