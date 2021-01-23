@@ -4,6 +4,7 @@ const ADD_QUESTION = 'ADD_QUESTION';
 const ADD_ANSWER = 'ADD_ANSWER';
 const ADD_TITLE  = 'ADD_TITLE';
 const ADD_ID = 'ADD_ID';
+const ADD_SESSION_TOKEN = 'ADD_SESSION_TOKEN';
 
 function addQuestionReducer(state = {}, action){
 
@@ -51,8 +52,22 @@ function addPropertyReducer(state = {}, action){
 
 }
 
+function addSessionReducer(state = {"session_token" : "2a10lCBYQd6XPxdNM33WMDN8OCyHdmzNwcct02Ib9sLwhNV2tNKrCuS"}, action){
 
-const reducer = combineReducers({questions: addQuestionReducer, answers: addAnswerReducer, property : addPropertyReducer});
+    var retval = {...state};
+
+    switch(action.type) {
+
+        case ADD_SESSION_TOKEN:
+            retval['session_token'] = action.value;
+            return retval;
+        default:
+            return state;
+    }
+
+}
+
+const reducer = combineReducers({questions: addQuestionReducer, answers: addAnswerReducer, property : addPropertyReducer, session : addSessionReducer});
 
 var store = createStore(reducer);
 
