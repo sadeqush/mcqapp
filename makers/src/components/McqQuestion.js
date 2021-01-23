@@ -269,14 +269,3 @@ function McqQuestion(props) {
 }
 
 export default McqQuestion;
-
-/*
-<a class='editpencil'>✎</a>
-        <InputBase
-          class='questionedit'
-          autoComplete='off'
-          onChange={(e) => titleOnInputFunc(e.target.value)}
-          defaultValue={"Question " + props.id}
-          inputProps={{ maxlength: 40 }}
-        />
-*/
