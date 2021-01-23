@@ -148,11 +148,12 @@ function McqQuestion(props) {
   function checkb(checkBox_id) {
     return (
       <Checkbox
+        tabIndex='-1'
         disableRipple={true}
         onClick={(e) => recordAnswer(checkBox_id, e)}
-        style={{ color: "#FCA311" }}
-        icon={<CheckBoxIcon fontSize='small' style={{ color: "#D9D9D9" }} />}
-        checkedIcon={<CheckBoxIcon fontSize='small' />}
+        style={{ color: "#FCA311", outline: "none" }}
+        icon={<CheckBoxIcon fontSize='medium' style={{ color: "#D9D9D9" }} />}
+        checkedIcon={<CheckBoxIcon fontSize='medium' />}
       />
     );
   }
@@ -236,14 +237,18 @@ function McqQuestion(props) {
   return (
     <Paper class='Question'>
       <form class='Question-form'>
-        <a class='editpencil'>✎</a>
-        <InputBase
-          class='questionedit'
-          autoComplete='off'
-          onChange={(e) => titleOnInputFunc(e.target.value)}
-          defaultValue={"Question " + props.id}
-          inputProps={{ maxlength: 40 }}
-        />
+        <div className='Question-id'>
+          <i className='fa fa-pencil editpencil'></i>
+          <input
+            type='text'
+            class='questionedit'
+            autoComplete='off'
+            onChange={(e) => titleOnInputFunc(e.target.value)}
+            defaultValue={"Question " + props.id}
+            // isn't working inputProps={{ maxlength: 40 }}
+            maxLength='40'
+          />
+        </div>
 
         <div className={editorClassname}>
           <QuestionEditor
@@ -254,7 +259,9 @@ function McqQuestion(props) {
           />
         </div>
 
-        <div class='correct_answer-text'></div>
+        {/* What is it? */}
+        <div class='Question-error'>{/* Put dialogs or Error here */}</div>
+
         {mcqChoiceGeneratingFunc()}
       </form>
     </Paper>
@@ -262,3 +269,14 @@ function McqQuestion(props) {
 }
 
 export default McqQuestion;
+
+/*
+<a class='editpencil'>✎</a>
+        <InputBase
+          class='questionedit'
+          autoComplete='off'
+          onChange={(e) => titleOnInputFunc(e.target.value)}
+          defaultValue={"Question " + props.id}
+          inputProps={{ maxlength: 40 }}
+        />
+*/

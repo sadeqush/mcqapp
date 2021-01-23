@@ -22,7 +22,7 @@ function Dashboard() {
             </p>
           </div>
           <div className='tabs'>
-            <i class='fa fa-user-circle'></i>
+            <i className='fa fa-user-circle'></i>
             <span>Profile</span>
           </div>
           <div className='tabs active'>

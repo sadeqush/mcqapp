@@ -8,7 +8,7 @@ import store from "./components/store";
 import "font-awesome/css/font-awesome.min.css";
 import { firebaseInit } from "./components/api";
 
-import LoginPage from "./components/App";
+import LoginPage from "./components/Dashboard";
 
 //Test Imports
 import TestComponent from "./components/testComponent";

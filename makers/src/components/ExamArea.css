@@ -1,8 +1,11 @@
 .ExamArea {
   padding: 1rem;
+  background: var(--gray);
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  min-height: 100vh;
 }
 
 .add_another_question_button {
