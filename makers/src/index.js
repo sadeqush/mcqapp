@@ -11,7 +11,7 @@ import {firebaseInit} from './components/api'
 
 
 
-import LoginPage from "./components/Dashboard";
+import LoginPage from "./components/LoginPage";
 
 
 //Test Imports

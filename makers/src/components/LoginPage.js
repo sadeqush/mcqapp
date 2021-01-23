@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./LoginPage.css";
 import InputBase from "@material-ui/core/InputBase";
 import { login, register } from "./api";
+import { useSelector } from "react-redux";
 
 
 /*
@@ -15,15 +16,20 @@ function LoginPage() {
   const [emailCN, setEmailCN] = useState("id_text");
   const [pwCN, setPWCN] = useState("id_text");
 
-  function processLogin() {
+
+  const reduxstore = useSelector(store=>store.session);
+
+  async function processLogin() {
     //Do Some email validation
     var user = await login(email, password);
+    console.log(user, "User from login page");
   }
 
-  function processRegister() {
+  async function processRegister() {
 
     //Do some email validation
-    var user = await register(email, password);
+    //var user = await register(email, password);
+    console.log(reduxstore.session_token);
   }
 
   return (
