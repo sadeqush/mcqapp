@@ -57,7 +57,16 @@
 
 .Dashboard-board .board-settings {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.Dashboard-board .board-settings .exam-id {
+  border: 1px dashed var(--yellow);
+  color: var(--yellow-lighter);
+  font-weight: bold;
+  padding: 0.25rem 0.5rem;
+  margin-right: auto;
 }
 
 .Dashboard-board .board-settings .button {
@@ -81,14 +90,3 @@
 .Dashboard-board .board-settings .button.edit {
   font-weight: bolder;
 }
-
-/* .Exam-card {
-    background-color: white;
-    min-width: min-content;
-    min-height: min-content;
-    max-width: 70em;
-    height: 10em;
-    margin-top: 4em;
-    margin-left: auto;
-    margin-right: auto;
-  } */

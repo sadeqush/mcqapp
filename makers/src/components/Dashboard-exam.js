@@ -11,6 +11,8 @@ function DashboardExam() {
     <button className='btn-viewMore'>View result</button>
   ) : null;
 
+  const copyValueHandler = () => console.log("Copy func");
+
   return (
     <div className='Dashboard-board'>
       <div className='top'>
@@ -29,6 +31,10 @@ function DashboardExam() {
         </div>
       </div>
       <div className='board-settings'>
+        <p className='exam-id' onClick={copyValueHandler}>
+          Exam id: <span>NF453</span>
+        </p>
+
         <button className='button edit'>
           <i className='fa fa-edit'></i>
           <span>Edit</span>

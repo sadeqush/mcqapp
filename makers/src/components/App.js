@@ -47,8 +47,15 @@ function App() {
         <header className='header'>
           <div className='container'>
             <p>
+              <i className='fa fa-book'></i>
               <b>{"Exam ID : " + examID}</b>
             </p>
+
+            {/* Settings *****************/}
+            <button className='settings_button'>
+              <i className='fa fa-cog'></i>
+              <span className='sr-only'></span>
+            </button>
 
             <button onClick={() => Finished(3)} class='submit_button'>
               Publish Test

@@ -3,112 +3,117 @@
   width: 100%;
   max-width: 50rem;
   margin: 1rem auto;
-  padding: 1rem;
+  padding: 1.5rem 2rem;
   border-radius: var(--radius-min);
 }
 
-.question-text {
-  color: #14213d;
-  padding: 1em;
-  border-bottom: none;
-  border-width: 1px;
-  border-style: solid;
-  margin: 1em;
-  border-color: #d9d9d9;
+/* For Question with id 
+*****************************************/
+.Question-id {
+  padding: 0 0.5rem;
+  display: flex;
+  align-items: center;
 }
 
 .editpencil {
-  display: inline-block;
-  margin: 1em;
-  margin-right: 0em;
-  padding-right: 0em;
-  margin-bottom: 0em;
-  padding-top: 1em;
-  padding-bottom: 0em;
+  padding: 0rem;
 }
 
 .questionedit {
-  display: inline-block;
   font-size: medium;
+  width: 100%;
+  padding: 1rem 0.5rem;
+
+  outline: none;
+}
+
+/* Rich Text Editor  
+**************************************/
+.question-text {
+  color: var(--blue);
+  padding: 1.5rem 0.75rem;
+  margin: 1rem 0;
+  border: 1px solid var(--gray);
+}
+
+.question-text-selected {
+  color: var(--blue);
+  padding: 1.5rem 0.75rem;
+  margin: 1rem 0;
+  border: 1px solid var(--yellow);
+}
+
+/* Throw error */
+.Question-error {
+  color: #898989;
+  padding: 0 0.25rem;
+}
+
+/* Answer Options 
+*************************************/
+.Opt {
+  margin-top: 0rem;
+}
+
+.Opt input[type="text"] {
+  font-size: 1.4rem;
+}
+
+.Option-unselected {
+  margin: 0.5rem 0;
+  border: 1px solid var(--gray);
+  border-left: none;
+  width: 100%;
+}
+.Option-selected {
+  margin: 0.5rem 0;
+  border: 1px solid var(--yellow);
+  border-left: none;
+  width: 100%;
+}
+
+/* a/b/c/d */
+.selector-unselected {
+  border: 1px solid var(--gray);
+  border-top: 0;
+  border-bottom: 0;
+  margin-right: 0.5em;
+  padding: 1.1rem 0.75rem;
+  font-size: 1.4rem;
+}
+
+.selector-selected {
+  border: 1px solid var(--yellow);
+  border-top: 0;
+  border-bottom: 0;
+  margin-right: 0.5em;
+  padding: 1.1rem 0.75rem;
+  font-size: 1.4rem;
+}
+
+/* Don't know what it's doing here! 
+.correct_answer-text {
+  color: #898989;
+  border: 1px solid salmon;
 }
 
 .answer-option-text {
   display: inline;
   margin-left: 1em;
+  background: red;
 }
 
-.Option-selected {
-  margin: auto;
-  margin-top: 1em;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #fca311;
-  text-align: left;
-  border-left: none;
-  width: 100%;
-}
-
-.Opt {
-  margin: 1em;
-}
 
 .isanswer-checkbox {
   margin-right: 0.6em;
   cursor: pointer;
   height: 25px;
   width: 25px;
+  border: 1px solid red;
 }
 
 .isanswer-checkbox:checked {
-  background: #fca311;
+  background: red;
 }
 
-.Option-unselected {
-  margin: auto;
-  margin-top: 1em;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #d9d9d9;
-  text-align: left;
-  border-left: none;
-  width: 100%;
-}
-
-.selector-selected {
-  display: inline;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #fca311;
-  padding: 0.5em;
-  border-bottom-width: 0px;
-  border-top-width: 0px;
-  padding-right: 0.5em;
-  padding-left: 0.5em;
-  margin-right: 0.5em;
-}
-
-.selector-unselected {
-  display: inline;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #d9d9d9;
-  padding: 0.5em;
-  border-bottom-width: 0px;
-  border-top-width: 0px;
-  padding-right: 0.5em;
-  padding-left: 0.5em;
-  margin-right: 0.5em;
-}
-
-.correct_answer-text {
-  color: #898989;
-}
-
-.question-text-selected {
-  padding: 1em;
-  border-bottom: none;
-  border-width: 1px;
-  border-style: solid;
-  margin: 1em;
-  border-color: #fca311;
-}
+*/
