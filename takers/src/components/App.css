@@ -1,14 +1,12 @@
 .App {
   text-align: center;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: smaller;
   flex-grow: 1;
 }
 
-
 .submit_button {
-
-  background-color: #FCA311;
+  background-color: #fca311;
   color: white;
   border: none;
   padding: 0.8em;
@@ -23,12 +21,9 @@
 }
 
 .submit_button:hover {
-
-  background-color: #FDAE2F;
-
+  background-color: #fdae2f;
 }
 
-.loading{
-  
+.loading {
   margin-top: 10em;
 }
