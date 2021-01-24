@@ -4,13 +4,14 @@ import "./components/index.css";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import store from "./components/store";
+import "font-awesome/css/font-awesome.min.css";
 
-import LoginScreen from "./components/LoginScreen";
+import LoginScreen from "./components/App";
 
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
-      <LoginScreen />
+      <LoginScreen exam_id='LW6623' />
     </React.StrictMode>
   </Provider>,
   document.getElementById("root")

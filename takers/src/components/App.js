@@ -34,6 +34,7 @@ function App(props) {
 
   async function onLoadFunc(examID) {
     var exam = await getExam(examID);
+    console.log(exam);
     dispatch({ type: ADD_PROPERTY, payload: exam.property });
     dispatch({ type: ADD_QUESTION, payload: exam.questions });
     setIsLoaded(true);
@@ -47,12 +48,61 @@ function App(props) {
     return (
       <div className='App' id='App'>
         <Grid container spacing={0} display='inline'>
-          {/**Old Top Panel */}
+          {/**Header  ***********/}
           <Grid item xs={12}>
+            <header className='header'>
+              <div className='container'>
+                <p>
+                  <i className='fa fa-book'></i>
+                  <b>{property["title"]}</b>
+                </p>
+
+                <button
+                  onClick={() => console.log("Submitted")}
+                  class='submit_button'
+                >
+                  Submit Test
+                </button>
+              </div>
+            </header>
+          </Grid>
+
+          {/**Old Left Panel */}
+          <Grid item xs={0} md={4}>
+            <LeftPanel />
+          </Grid>
+
+          <Grid item xs={12} md={8}>
+            <div className='container'>
+              <ExamArea />
+            </div>
+          </Grid>
+        </Grid>
+      </div>
+    );
+  } else {
+    /*This gets rendered when the fetch method is still getting the response from the API call */
+    return (
+      <div class='App loading'>
+        <CircularProgress style={{ color: "#FCA311" }}></CircularProgress>
+      </div>
+    );
+  }
+}
+
+export default App;
+
+/*
+1. Replace AppBar with Header tag
+
+*/
+
+/*
+<Grid item xs={12}>
             <AppBar style={{ background: "#14213D", position: "fixed" }}>
               <Toolbar>
                 <b>{property["title"]}</b>
-                {/*CSS for the submit button is in App.css*/}
+                {/*CSS for the submit button is in App.css*
                 <button
                   onClick={() => console.log("answers")}
                   class='submit_button'
@@ -63,26 +113,4 @@ function App(props) {
             </AppBar>
           </Grid>
 
-          {/**Old Left Panel */}
-          <Grid item xs={0} md={4}>
-            <LeftPanel />
-          </Grid>
-
-          <Grid item xs={12} md={8}>
-            <ExamArea />
-          </Grid>
-        </Grid>
-      </div>
-    );
-  } else {
-
-  /*This gets rendered when the fetch method is still getting the response from the API call */
-    return (
-      <div class='App loading'>
-        <CircularProgress style={{ color: "#FCA311" }}></CircularProgress>
-      </div>
-    );
-  }
-}
-
-export default App;
+*/

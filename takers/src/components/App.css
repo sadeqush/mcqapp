@@ -1,27 +1,51 @@
 .App {
-  text-align: center;
-  font-family: "Roboto", sans-serif;
-  font-size: smaller;
-  flex-grow: 1;
+  width: 100%;
+  min-height: 100vh;
+  background: var(--gray);
+}
+
+/*   Header 
+*******************************/
+.App .header {
+  background: var(--blue);
+  color: var(--white);
+  height: 6rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.App .header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.App .header .container p {
+  margin-right: auto;
+}
+.App .header .container p .fa {
+  margin-right: 0.5rem;
+}
+
+.settings_button {
+  background: transparent;
+  color: var(--white);
+  font-size: 1.75rem;
+  padding: 0.35rem 1.25rem;
 }
 
 .submit_button {
-  background-color: #fca311;
-  color: white;
-  border: none;
-  padding: 0.8em;
-  padding-left: 2em;
-  padding-right: 2em;
+  background-color: var(--yellow);
+  color: var(--white);
+  margin-left: 0.5rem;
+  padding: 0.75rem 1rem;
   font-weight: bold;
-  border-radius: 0.2em;
-  margin: 1em;
-  cursor: pointer;
-  margin-right: 3em;
-  margin-left: auto;
+  transition: background var(--transition);
 }
-
 .submit_button:hover {
-  background-color: #fdae2f;
+  background-color: var(--yellow-light);
 }
 
 .loading {

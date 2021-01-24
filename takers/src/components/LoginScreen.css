@@ -1,21 +1,23 @@
-.LoginScreen {
+.LoginPage {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  background: var(--gray);
+
   display: grid;
   place-items: center;
 }
 
-.LoginScreen-form {
+.LoginForm {
   width: 90%;
   max-width: 30rem;
-  min-height: 35rem;
+  min-height: 15em;
   padding: 2rem 1.5rem 3rem 1.5rem;
   background: var(--blue);
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  align-content: center;
 }
 
 .LoginForm-avatar {
@@ -60,4 +62,12 @@
 
 .button:hover {
   background: var(--yellow);
+}
+
+/* The bar on top of Register button */
+.LoginForm-bar {
+  width: 100%;
+  height: 0.1rem;
+  background: var(--white);
+  margin: 1.5rem 0;
 }
