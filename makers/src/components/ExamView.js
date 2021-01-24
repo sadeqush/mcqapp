@@ -74,12 +74,11 @@ function ExamView() {
   else return "Loading";
 }
 
-export default App;
+export default ExamView;
 
 /*
 1. Removed LeftPanel
 2. Replaced Appbar with header element
-3. ExamArea will be inside a box which will have display:flex
 
 
 */

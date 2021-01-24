@@ -2,21 +2,21 @@
   background-color: var(--gray);
   width: 100%;
   min-height: 100vh;
-
-  display: flex;
 }
 
 .Dashboard-drawer {
-  background: var(--blue);
-  color: var(--white);
-  width: 30rem;
-  height: 100vh;
-  padding: 1rem 0;
-
   position: fixed;
   top: 0;
+  bottom: 0;
+  left: 0;
   position: relative;
   z-index: 999;
+
+  background: var(--blue);
+  color: var(--white);
+  width: 25rem;
+  height: 100vh;
+  padding: 1rem 0;
 
   display: flex;
   flex-direction: column;
@@ -24,7 +24,6 @@
 }
 
 .Dashboard-drawer .toggle-close {
-  /* border: 1px solid currentColor; */
   padding: 0.5rem 1rem;
   position: absolute;
   top: 4.5%;
@@ -83,8 +82,13 @@
 /* Boards 
 **********************************************/
 .Dashboard-content {
-  width: calc(70% + 30rem);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 25rem;
+  width: calc(100% - 25rem);
   min-height: 100vh;
+  overflow-y: auto;
 }
 
 .Dashboard-content .header {
@@ -149,6 +153,7 @@
   .Dashboard-content {
     width: 100%;
     min-height: 100vh;
+    left: 0;
   }
 
   .Dashboard-content .header .toggle-menu {
