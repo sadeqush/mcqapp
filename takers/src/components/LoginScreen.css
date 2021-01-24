@@ -1,52 +1,63 @@
 .LoginScreen {
-    text-align: center;
-    font-family: 'Roboto', sans-serif;
-    font-size: smaller;
-    flex-grow: 1;
-  }
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
 
-  .button {
+.LoginScreen-form {
+  width: 90%;
+  max-width: 30rem;
+  min-height: 35rem;
+  padding: 2rem 1.5rem 3rem 1.5rem;
+  background: var(--blue);
 
-    background-color: #FCA311;
-    color: white;
-    border: none;
-    padding: 0.8em;
-    padding-left: 2em;
-    padding-right: 2em;
-    font-weight: bold;
-    border-radius: 0.2em;
-    margin: 1em;
-    cursor: pointer;
-    margin-right: 3em;
-    margin-left: auto;
-  }
-  
-  .button:hover {
-  
-    background-color: #FDAE2F;
-  
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-  .id_text {
-      border-width: 1px;
-      border-style: solid;
-      border-color: #D9D9D9;
-      background-color: white;
-      margin: 1em;
-      padding: 0.1em;
-      margin-top: 20em;
-      padding-left: 0.6em;
-      border-radius: 0.2em;
-  }
+.LoginForm-avatar {
+  width: 9rem;
+  height: 9rem;
+  margin-bottom: 2rem;
+  object-fit: cover;
+  border-radius: var(--radius-full);
+}
 
-  .id_text_selected {
-    border-width: 1px;
-    border-style: solid;
-    border-color: #FDAE2F;
-    background-color: white;
-    margin: 1em;
-    padding: 0.1em;
-    margin-top: 20em;
-    padding-left: 0.6em;
-    border-radius: 0.2em;
+.id_text {
+  border: 2px solid var(--white);
+  background: var(--white);
+  width: 100%;
+  margin: 0.6rem 0;
+  padding: 0.1rem 0.75rem;
+  transition: border var(--transition);
+}
+
+.id_text_selected {
+  border: 2px solid var(--yellow);
+  background: var(--white);
+  width: 100%;
+  margin: 0.6rem 0;
+  padding: 0.1rem 0.75rem;
+  transition: border var(--transition);
+}
+.id_text input,
+.id_text_selected input {
+  font-size: 1.5rem;
+}
+
+.button {
+  background: var(--yellow-light);
+  color: var(--white);
+  width: 100%;
+  margin: 0.6rem 0;
+  padding: 1.1rem 1rem;
+  font-weight: bold;
+  transition: background var(--transition);
+}
+
+.button:hover {
+  background: var(--yellow);
 }
