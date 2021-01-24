@@ -7,17 +7,16 @@ import { Provider } from "react-redux";
 import store from "./components/store";
 import "font-awesome/css/font-awesome.min.css";
 
-import LoginPage from "./components/Dashboard";
 
 //Test Imports
-import TestComponent from "./components/testComponent";
+import TestComponent from "./components/ErrorPage";
 var test = true;
 
 if (test) {
   ReactDOM.render(
     <Provider store={store}>
       <React.StrictMode>
-        <LoginPage></LoginPage>
+        <TestComponent text="We can't seem to find the page you're looking for."></TestComponent>
       </React.StrictMode>
     </Provider>,
     document.getElementById("root")
