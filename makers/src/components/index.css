@@ -26,10 +26,12 @@ html {
   --blue: #14213d;
   --blue-light: #213766;
   --yellow: #fca311;
+  --yellow-dark: #b4730b;
   --yellow-light: #fdae2f;
   --yellow-lighter: #fdba4d;
   --green: #52b788;
   --red: #fc1130;
+  --red-dark: #970115;
   --radius-full: 50%;
   --radius-min: 0.5rem;
   --transition: 0.3s linear;

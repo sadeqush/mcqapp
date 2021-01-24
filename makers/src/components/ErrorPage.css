@@ -1,0 +1,72 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.ePage h1{
+    display: flex;
+    justify-content: center;
+    font-size: 12rem;
+    color: #EA9102;
+    user-select: none;
+}
+.oops{
+    display: flex;
+    justify-content: center;
+    font-size: 10rem;
+    color: var(--yellow);
+    user-select: none;
+}
+.ePage i{
+    font-size: 18rem;
+    color: var(--yellow);
+    display: flex;
+    justify-content: center;
+    margin-top: 6rem;
+}
+.ePage i:hover{
+    transform: rotate(360deg);
+    transition: all 1.5s;
+}
+.text{
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    color: #707070;
+    user-select: none;
+}
+.goBackBtn{
+    display: flex;
+    margin-left: 47%;
+    margin-top: 2%;
+    background-color: var(--yellow);
+    padding: 12px;
+    color: var(--white);
+}
+.goBackBtn:hover{
+    background-color: var(--yellow-light);
+}
+@media(max-width: 1000px){
+    .goBackBtn{
+        transform: scale(0.8);
+        margin-left: 46%;
+    }
+}
+@media(max-width: 850px){
+    .text{
+        font-size: 122%;
+    }
+    .goBackBtn{
+        transform: scale(0.8);
+        margin-left: 42%;
+    }
+}
+@media(max-width: 650px){
+    .text{
+        font-size: 100%;
+    }
+    .goBackBtn{
+        transform: scale(0.8);
+        margin-left: 44%;
+    }
+}

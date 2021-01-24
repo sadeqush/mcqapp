@@ -1,3 +1,28 @@
 .stylebutton-active{
     background-color: #FCA311;
 }
+.btns{
+    margin-top: -15px;
+    margin-bottom: 2%;
+}
+.inlinebutton{
+    margin-left: -2%;
+    padding: 2%;
+    font-size: 10px;
+    user-select: none;
+    color: #888888;
+}
+.inlinebutton_active{
+    margin-left: -2%;
+    padding: 2%;
+    font-size: 10px;
+    color: #FCA311;
+    cursor: pointer;
+    font-weight: bold;
+}
+.inlinebutton:hover{
+    margin-left: -2%;
+    padding: 2%;
+    color: #FCA311;
+    cursor: pointer;
+}

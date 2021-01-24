@@ -74,7 +74,7 @@ function ExamView() {
   else return "Loading";
 }
 
-export default App;
+export default ExamView;
 
 /*
 1. Removed LeftPanel
