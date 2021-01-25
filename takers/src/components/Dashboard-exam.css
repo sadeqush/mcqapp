@@ -1,0 +1,50 @@
+.Dashboard-board {
+  background: var(--white);
+  min-height: 5rem;
+  padding: 1.25rem 2rem;
+  margin-bottom: 2rem;
+}
+
+.Dashboard-board .top {
+  display: flex;
+  justify-content: space-between;
+}
+
+/*  Right Side or answered status
+  ********************************************/
+.answer-status {
+  padding: 0.5rem 1rem;
+  font-size: 1.4rem;
+}
+.answer-status i {
+  color: var(--yellow-lighter);
+  padding-right: 0.5rem;
+}
+
+/*   view answer button 
+  *******************************************/
+.Dashboard-board .board-content p {
+  font-size: 1.3rem;
+}
+
+.Dashboard-board .board-settings {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.Dashboard-board .board-settings .button {
+  background: transparent;
+  padding: 0.5rem 1rem;
+  color: var(--yellow);
+  font-size: inherit;
+}
+.Dashboard-board .board-settings .button:hover {
+  background: var(--yellow);
+  color: var(--white);
+}
+
+.Dashboard-board .board-settings .button span {
+  margin-left: 0.5rem;
+}
