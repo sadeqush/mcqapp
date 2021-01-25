@@ -1,0 +1,14 @@
+.students-list li {
+  height: 5rem;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  color: var(--white);
+  background: var(--blue);
+}
+
+.students-list li:nth-child(even) {
+  background: var(--blue-light);
+}

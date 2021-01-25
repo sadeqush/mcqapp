@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./Dashboard-result.css";
+import List from "./Dashboard-res-student";
 
 function DashboardResult() {
+  const [showProgBar, setShowProgBar] = useState(false);
+  const con = !showProgBar;
+  const downloadResultHandler = () => setShowProgBar(con);
+
+  let progbar = null;
+  if (showProgBar) progbar = <div className='progbar'></div>;
+
   return (
     <div className='Dashboard-result'>
       <div className='header'>
@@ -15,7 +23,28 @@ function DashboardResult() {
         <button className='edit-btn'>Edit Exam</button>
       </div>
       {/* Download section */}
+      <div className='download-section'>
+        <button className='download-btn' onClick={downloadResultHandler}>
+          Download as Excel
+        </button>
+        {/* progbar */}
+        {progbar}
+      </div>
+
       {/* The list */}
+      <ul className='students-list'>
+        <div className='students-list-header'>
+          <h3>Name</h3>
+          <h3>Score</h3>
+        </div>
+
+        <List name='John Doe' score='35' />
+        <List name='Jane Doe' score='30' />
+        <List name='John Doe' score='35' />
+        <List name='Jane Doe' score='30' />
+        <List name='John Doe' score='35' />
+        <List name='Jane Doe' score='30' />
+      </ul>
     </div>
   );
 }
