@@ -79,8 +79,8 @@
   background: var(--yellow);
 }
 
-/* Boards 
-**********************************************/
+/* Header 
+    **********************************************/
 .Dashboard-content {
   position: fixed;
   top: 0;
@@ -94,7 +94,7 @@
 .Dashboard-content .header {
   width: 90%;
   max-width: 80rem;
-  margin: 5rem auto 2rem auto;
+  margin: 2rem auto 2rem auto;
   min-height: 5rem;
 
   display: flex;
@@ -112,31 +112,57 @@
   visibility: hidden;
 }
 
-.Dashboard-content .header .create-new {
-  background: var(--yellow);
-  color: var(--white);
-  padding: 0.8rem 1.25rem 0.75rem 1.25rem;
-  font-size: 1.6rem;
-  transition: background var(--transition);
-  display: flex;
-  align-items: center;
-}
-.Dashboard-content .header .create-new:hover {
-  background: var(--yellow-light);
-}
-.Dashboard-content .header button span {
-  margin-left: 0.5rem;
-}
-
-.Dashboard-boards {
+/*  Profile 
+*****************************************/
+.profile {
   width: 90%;
   max-width: 80rem;
+  height: 70%;
   margin: auto;
+  display: grid;
+  place-items: center;
+}
+
+.profile-form {
+  background: var(--white);
+  width: 100%;
+  max-width: 40rem;
   min-height: 25rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-form > * {
+  border: 1px solid var(--yellow);
+  width: 100%;
+  max-width: 25rem;
+  padding: 1rem 2rem;
+  margin: 1rem 0;
+}
+
+.profile-form > *:disabled,
+.profile-form > *:hover:disabled {
+  border: 0;
+  background: var(--gray);
+  color: #777777;
+  cursor: not-allowed;
+}
+
+.profile-form-submit {
+  background: var(--yellow);
+  color: var(--white);
+  font-weight: bold;
+  transition: background var(--transition);
+}
+.profile-form-submit:hover {
+  background: var(--yellow-light);
 }
 
 /*    RESPONSIVE  
-***************************************/
+    ***************************************/
 
 @media screen and (max-width: 500px) {
   .Dashboard-drawer {

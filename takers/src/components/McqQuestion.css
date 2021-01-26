@@ -1,85 +1,78 @@
-.Question{
-    text-align: left;
-    border-style: solid;
-    margin: auto;
-    margin-top: 2em;
-    margin-bottom: 0em;
-    border-radius: 0.2em;
-    border-width: 0em;
-    padding-bottom: 1em;
-    background-color: #ffffff;
-    max-width: 60em;
-    min-width: min-content;
+.Question {
+  background: var(--white);
+  width: 100%;
+  max-width: 60rem;
+  margin: 2.5rem auto;
+  padding: 1.5rem 2rem;
+  border-radius: var(--radius-min);
 }
 
-
-.question-text{
-    color: #14213D;
-    padding: 1em;
-    padding-bottom: 3em;
+.question-title {
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+.question-title-text {
+  margin-left: 1rem;
 }
 
-.question-title{
-    display: "inline-block";
-    font-weight: bold;
-    margin:1em;
-    margin-bottom: 0em;
-    padding-top: 1em;
-}
-.question-title-text{
-    display: "inline-block";
-    margin-left: 1em;
-    margin-top: none;
+.question-text {
+  color: var(--blue);
+  padding: 0.5rem;
+  margin-bottom: 3rem;
 }
 
+/*   Options 
+***********************************/
+.Option-unselected,
 .Option-selected {
-    cursor: pointer;
-    margin: 1em;
-    padding: 1em;
-    padding-left: 0em;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #FCA311;
-    text-align: left;
+  cursor: pointer;
+  margin: 0.5rem 0;
+  width: 100%;
+  border-left: none;
+  display: flex;
 }
-
 .Option-unselected {
-    cursor: pointer;
-    margin: 1em;
-    padding: 1em;
-    padding-left: 0em;
-    border-style: solid;
-    border-width: 1px;
-    border-color:#d9d9d9;
-    text-align: left;
+  border: 1px solid var(--gray);
+}
+.Option-selected {
+  border: 1px solid var(--yellow);
 }
 
 .answer-option-text {
-    display: inline;
-    margin-left: 1em;
+  width: 100%;
+  height: auto;
+  line-break: anywhere;
+  align-self: center;
+}
+.answer-option-text p {
+  padding: 0.25rem 0;
 }
 
+.selector-unselected {
+  margin-right: 0.5em;
+  padding: 1.1rem 0.75rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  border: 1px solid var(--gray);
+  border-top: 0;
+  border-bottom: 0;
 
-.selector-selected{
-    display: inline;
-    background-color: #FCA311;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #FCA311;
-    color: white;
-    padding: 1em;
-    padding-right: 0.8em;
-    padding-left: 0.8em;
+  display: grid;
+  place-items: center;
 }
 
-.selector-unselected{
-    display: inline;
-    padding: 1em;
-    border-style: solid;
-    border-color: #d9d9d9;
-    border-width: 1px;
-    padding-right: 0.8em;
-    padding-left: 0.8em;
-    border-left: none;
-    border-bottom: none;
+.selector-selected {
+  margin-right: 0.5em;
+  padding: 1.1rem 0.75rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  background: var(--yellow);
+  color: var(--white);
+  border: 1px solid var(--yellow);
+  border-top: 0;
+  border-bottom: 0;
+
+  display: grid;
+  place-items: center;
 }

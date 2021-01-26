@@ -1,0 +1,76 @@
+.Dashboard-result {
+  background: var(--white);
+  min-height: 5rem;
+  padding: 1.25rem 2rem;
+  margin-bottom: 2rem;
+}
+
+/*  Header section that has title, labels and edit exam button 
+******************************************/
+.Dashboard-result .header {
+  padding-bottom: 2rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.Dashboard-result .header .labels span {
+  background: var(--yellow);
+  color: var(--white);
+  font-size: 1.2rem;
+  padding: 0.25rem 0.75rem;
+  margin: 0.25rem 0.5rem;
+  border-radius: 2.5rem;
+}
+
+.Dashboard-result .header .edit-btn {
+  background: var(--yellow);
+  color: var(--white);
+  font-size: inherit;
+  font-family: inherit;
+  padding: 0.5rem 1rem;
+}
+
+/*   Download section  
+******************************************/
+.download-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.download-btn {
+  background: transparent;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--yellow);
+}
+
+.progbar {
+  width: 100%;
+  height: 0.5rem;
+  margin: 1rem 0;
+  background: var(--blue-light);
+
+  /* background: repeating-linear-gradient(
+    45deg,
+    var(--yellow),
+    var(--blue) 7px,
+    var(--yellow) 15px
+  ); */
+}
+
+/*   Students list of result 
+  style of <li> are in Dashboard-res-student.css
+**********************************************/
+.students-list {
+  margin: 1rem 0;
+}
+.students-list-header {
+  height: 5rem;
+  padding: 1rem 2rem;
+  color: var(--white);
+  background: var(--yellow);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
