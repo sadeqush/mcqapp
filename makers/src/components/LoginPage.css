@@ -23,7 +23,7 @@
 .LoginForm-avatar {
   width: 9rem;
   height: 9rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   object-fit: cover;
   border-radius: var(--radius-full);
 }
@@ -70,4 +70,12 @@
   height: 0.1rem;
   background: var(--white);
   margin: 1.5rem 0;
+}
+.msg{
+  color: aliceblue;
+  background-color: var(--green);
+  padding: 1rem 1.98rem;
+  align-items: center;
+  margin-top: 4%;
+  opacity: 0;
 }

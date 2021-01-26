@@ -40,6 +40,9 @@ function LoginPage() {
           src='https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png'
           alt='Login Avatar'
         />
+        <div className="msg">
+          <p>You have logged in successfully!</p>
+        </div>
 
         {/* Input elements */}
         <InputBase

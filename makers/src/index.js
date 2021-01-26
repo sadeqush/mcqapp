@@ -9,7 +9,7 @@ import "font-awesome/css/font-awesome.min.css";
 
 
 //Test Imports
-import TestComponent from "./components/ErrorPage";
+import TestComponent from "./components/LoginPage";
 var test = true;
 
 if (test) {
