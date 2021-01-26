@@ -1,4 +1,3 @@
-import { AppBar, Toolbar } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import "./Dashboard-exam.css";
 
@@ -35,14 +34,16 @@ function DashboardExam() {
           Exam id: <span>NF453</span>
         </p>
 
-        <button className='button edit'>
-          <i className='fa fa-edit'></i>
-          <span>Edit</span>
-        </button>
-        <button className='button'>
-          <i className='fa fa-trash'></i>
-          <span>Delete</span>
-        </button>
+        <div className='board-settings-right'>
+          <button className='button edit'>
+            <i className='fa fa-edit'></i>
+            <span>Edit</span>
+          </button>
+          <button className='button'>
+            <i className='fa fa-trash'></i>
+            <span>Delete</span>
+          </button>
+        </div>
       </div>
     </div>
   );

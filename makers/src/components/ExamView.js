@@ -6,6 +6,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import { useDispatch } from "react-redux";
 import { SubmitTest, getExamID } from "./api";
+import Spinner from "./Spinner";
 
 const ADD_ID = "ADD_ID";
 
@@ -42,7 +43,6 @@ function ExamView() {
 
   if (isLoaded)
     return (
-      
       <div class='App'>
         {/**Header  ***********/}
         <header className='header'>
@@ -55,11 +55,12 @@ function ExamView() {
             {/* Settings *****************/}
             <button className='settings_button'>
               <i className='fa fa-cog'></i>
-              <span className='sr-only'></span>
+              <span>Settings</span>
             </button>
 
             <button onClick={() => Finished(3)} class='submit_button'>
-              Publish Test
+              <i className='fa fa-paper-plane'></i>
+              <span>Publish </span>
             </button>
           </div>
         </header>
@@ -72,7 +73,12 @@ function ExamView() {
         </div>
       </div>
     );
-  else return "Loading";
+  else
+    return (
+      <div className='spinner-wrapper'>
+        <Spinner />
+      </div>
+    );
 }
 
 export default ExamView;

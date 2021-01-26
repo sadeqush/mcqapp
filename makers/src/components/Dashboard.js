@@ -1,5 +1,5 @@
 import { AppBar, Toolbar } from "@material-ui/core";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useLayoutEffect } from "react";
 import "./Dashboard.css";
 import Exam from "./Dashboard-exam";
 import ErrorPage from './ErrorPage'
@@ -7,7 +7,7 @@ import {checkSessionToken} from './api'
 import { useHistory } from "react-router-dom";
 
 function Dashboard() {
-
+  // Toggler
   const [toggleDrawer, setToggleDrawer] = useState(true);
   const [isLoaded, setIsLoaded ] = useState(false);
 
@@ -27,7 +27,6 @@ function Dashboard() {
   
   const toggleDrawerHandler = () =>
     toggleDrawer ? setToggleDrawer(false) : setToggleDrawer(true);
-
   let pushLeft;
 
   toggleDrawer ? (pushLeft = { left: "0rem" }) : (pushLeft = { left: "-100%" });
