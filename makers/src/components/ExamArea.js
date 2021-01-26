@@ -13,7 +13,6 @@ Things to do:
 */
 
 function ExamArea() {
-  console.log("Exam Area is loaded!");
   const [currentQuesID, setCurrentQuesID] = useState(2);
   const [mcqQuestionIDList, setmcqQuestionIDList] = useState([1]);
 

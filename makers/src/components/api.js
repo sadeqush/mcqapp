@@ -1,7 +1,10 @@
 import axios from "axios";
 import store from "./store";
+import 'universal-cookie';
+import Cookies from "universal-cookie";
 
-axios.defaults.timeout = 4000;
+axios.defaults.timeout = 8000;
+var cookie = new Cookies();
 
 /**
  * Base URL of the API Endpoint.
@@ -63,6 +66,7 @@ export async function login(email, password) {
       value: session_token,
     };
     store.dispatch(sessionIDAction);
+    cookie.set("session_token", session_token);
     return session_token;
   } else {
     return false;
@@ -84,8 +88,12 @@ export async function register(email, password) {
 
 export async function checkSessionToken(session_token){
 
-  return false;
-  
+  //return true;
+  if(!session_token){
+    var fullstore = store.getState();
+    var session_token = fullstore.session.session_token;
+    console.log("Implicit session token");
+  }
   var axiosObject = {};
   axiosObject['session_token'] = session_token;
 

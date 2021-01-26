@@ -2,18 +2,46 @@ import { AppBar, Toolbar } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import "./Dashboard.css";
 import Exam from "./Dashboard-exam";
+import ErrorPage from './ErrorPage'
+import {checkSessionToken} from './api'
+import { useHistory } from "react-router-dom";
 
 function Dashboard() {
+
   const [toggleDrawer, setToggleDrawer] = useState(true);
+  const [isLoaded, setIsLoaded ] = useState(false);
+
+  let history = useHistory();
+
+  useEffect(onInnitialLoad, []);
+
+  async function onInnitialLoad(){
+
+    var isLoggedin = await checkSessionToken();
+    //Get more information here.
+    if(isLoggedin){
+      setIsLoaded(true);
+    }
+
+  }
+  
   const toggleDrawerHandler = () =>
     toggleDrawer ? setToggleDrawer(false) : setToggleDrawer(true);
-  // const toggleOpenDrawerHandler = () =>
-  //   toggleDrawer ? setToggleDrawer(false) : null;
-
-  console.log(toggleDrawer);
 
   let pushLeft;
+
   toggleDrawer ? (pushLeft = { left: "0rem" }) : (pushLeft = { left: "-100%" });
+
+  function createExamButtonOnClick(){
+    history.push(
+      {
+        pathname: "/exam_editor"
+      }
+    )
+  }
+
+
+  console.log(isLoaded);
 
   return (
     <div className='Dashboard'>
@@ -62,7 +90,7 @@ function Dashboard() {
             <span className='sr-only'>Toggle Drawer Menu</span>
           </button>
 
-          <button className='create-new'>
+          <button className='create-new' onClick={(e)=>createExamButtonOnClick()}>
             <i className='fa fa-plus-square'></i>
             <span>Create New Exam</span>
           </button>

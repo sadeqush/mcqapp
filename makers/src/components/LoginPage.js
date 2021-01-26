@@ -39,8 +39,16 @@ function LoginPage() {
 
       var cookie = new Cookies();
       cookie.set('session_token', session_token);
-      history.push('/dashboard');
+      
+      history.push(
+        {
+          
+          pathname : "/dashboard",
+          isLoggedIn : true,
 
+        }
+
+      );
     }
 
     else{

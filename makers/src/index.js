@@ -10,14 +10,14 @@ import "font-awesome/css/font-awesome.min.css";
 import LoginPage from "./components/Dashboard-result";
 
 //Test Imports
-import TestComponent from "./components/testComponent";
+import TestComponent from "./components/Dashboard";
 var test = false;
 
 if (test) {
   ReactDOM.render(
     <Provider store={store}>
       <React.StrictMode>
-        <TestComponent text="We can't seem to find the page you're looking for."></TestComponent>
+        <TestComponent></TestComponent>
       </React.StrictMode>
     </Provider>,
     document.getElementById("root")
