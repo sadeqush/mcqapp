@@ -78,6 +78,7 @@
   background: transparent;
   padding: 0.5rem 1rem;
   color: var(--yellow-lighter);
+  transition: none;
   font-size: inherit;
   display: flex;
 }

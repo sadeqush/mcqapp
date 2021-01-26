@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 import store from "./components/store";
 import "font-awesome/css/font-awesome.min.css";
 
-import LoginPage from "./components/Dashboard-result";
+import LoginPage from "./components/App";
 
 //Test Imports
 import TestComponent from "./components/testComponent";
