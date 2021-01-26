@@ -166,6 +166,12 @@
     left: 0;
   }
 
+  .dashboard-content-form input[type="text"] {
+    padding: 1rem;
+    font-size: 1.2rem;
+    width: 10rem;
+  }
+
   .Dashboard-content .header .toggle-menu {
     visibility: visible;
   }

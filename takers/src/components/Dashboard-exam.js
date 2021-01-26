@@ -24,7 +24,7 @@ function DashboardExam() {
 
       <div className='board-settings'>
         <button className='button' onClick={viewAnswer}>
-          <i className='fa fa-trash'></i>
+          <i className='fa fa-file'></i>
           <span>View Answers</span>
         </button>
       </div>
