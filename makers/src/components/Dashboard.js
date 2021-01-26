@@ -1,17 +1,13 @@
 import { AppBar, Toolbar } from "@material-ui/core";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useLayoutEffect } from "react";
 import "./Dashboard.css";
 import Exam from "./Dashboard-exam";
 
 function Dashboard() {
+  // Toggler
   const [toggleDrawer, setToggleDrawer] = useState(true);
   const toggleDrawerHandler = () =>
     toggleDrawer ? setToggleDrawer(false) : setToggleDrawer(true);
-  // const toggleOpenDrawerHandler = () =>
-  //   toggleDrawer ? setToggleDrawer(false) : null;
-
-  console.log(toggleDrawer);
-
   let pushLeft;
   toggleDrawer ? (pushLeft = { left: "0rem" }) : (pushLeft = { left: "-100%" });
 

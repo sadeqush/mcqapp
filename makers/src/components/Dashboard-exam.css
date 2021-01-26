@@ -58,7 +58,13 @@
 .Dashboard-board .board-settings {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin-top: 1rem;
+}
+.board-settings-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .Dashboard-board .board-settings .exam-id {
@@ -66,7 +72,6 @@
   color: var(--yellow-lighter);
   font-weight: bold;
   padding: 0.25rem 0.5rem;
-  margin-right: auto;
 }
 
 .Dashboard-board .board-settings .button {
@@ -74,9 +79,7 @@
   padding: 0.5rem 1rem;
   color: var(--yellow-lighter);
   font-size: inherit;
-
-  /* margin-top: -2.5rem; 
-    In case you want to push the button up*/
+  display: flex;
 }
 .Dashboard-board .board-settings .button:hover {
   background: var(--yellow-light);
