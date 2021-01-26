@@ -38,9 +38,6 @@ export async function getExamID() {
   console.log(baseURL+'generate_exam_id', "url"
   );
 
-  console.log(axiosObject, 
-    "axiosObejct")
-
   var response = await axios.post(baseURL+'generate_exam_id', axiosObject);
   response = response.data;
 
@@ -85,7 +82,25 @@ export async function register(email, password) {
   }
 }
 
-export async function logout(session_token) {
+export async function checkSessionToken(session_token){
+
+  return false;
+  
+  var axiosObject = {};
+  axiosObject['session_token'] = session_token;
+
+  var response = await axios.post(baseURL+'authenticate_sessiontoken', axiosObject);
+  response  = response.data;
+
+  if(response.success){
+    return true;
+  }
+  else return false;
+
+}
+
+export async function logout(session_token){
+
   var axiosObject = {};
   axiosObject['session_token'] = session_token;
 

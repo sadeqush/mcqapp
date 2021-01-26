@@ -42,6 +42,7 @@ function ExamView() {
 
   if (isLoaded)
     return (
+      
       <div class='App'>
         {/**Header  ***********/}
         <header className='header'>

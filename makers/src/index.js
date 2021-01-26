@@ -10,8 +10,8 @@ import "font-awesome/css/font-awesome.min.css";
 import LoginPage from "./components/Dashboard-result";
 
 //Test Imports
-import TestComponent from "./components/ErrorPage";
-var test = true;
+import TestComponent from "./components/testComponent";
+var test = false;
 
 if (test) {
   ReactDOM.render(
@@ -26,7 +26,7 @@ if (test) {
   ReactDOM.render(
     <Provider store={store}>
       <React.StrictMode>
-        <App exam_id='exam0' />
+        <App/>
       </React.StrictMode>
     </Provider>,
     document.getElementById("root")
