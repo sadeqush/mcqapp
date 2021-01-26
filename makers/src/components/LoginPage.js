@@ -3,6 +3,8 @@ import "./LoginPage.css";
 import InputBase from "@material-ui/core/InputBase";
 import { login, register } from "./api";
 import { useSelector } from "react-redux";
+import logo from './mcqappAvatar-01.png';
+
 
 
 /*
@@ -37,7 +39,7 @@ function LoginPage() {
       <form className='LoginForm'>
         <img
           className='LoginForm-avatar'
-          src='https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png'
+          src={logo}
           alt='Login Avatar'
         />
         <div className="msg">
