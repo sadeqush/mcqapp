@@ -24,7 +24,7 @@ export async function SubmitTest() {
   axiosObject['exam_answers'] = {...answers};
 
 
-  var response = await axios.put(baseURL+'publish_exam', axiosObject);
+  var response = await axios.post(baseURL+'publish_exam', axiosObject);
   response = response.data;
 
   if(response.success){
@@ -42,7 +42,7 @@ export async function getExamID(){
   var axiosObject = {};
   axiosObject['session_token'] = session_token;
 
-  var response = axios.put(baseURL+'generate_exam_id', axiosObject);
+  var response = await axios.post(baseURL+'generate_exam_id', axiosObject);
   response = response.data;
 
   if(response.success){
@@ -83,7 +83,7 @@ export async function register(email, password){
   axiosObject['username'] = email;
   axiosObject['password'] = password;
 
-  var response = await axios.put(baseURL+'register', axiosObject);
+  var response = await axios.post(baseURL+'register', axiosObject);
   response = response.data;
 
   if(response.success){
@@ -91,12 +91,29 @@ export async function register(email, password){
   }
 }
 
+export async function checkSessionToken(session_token){
+
+  return false;
+  
+  var axiosObject = {};
+  axiosObject['session_token'] = session_token;
+
+  var response = await axios.post(baseURL+'authenticate_sessiontoken', axiosObject);
+  response  = response.data;
+
+  if(response.success){
+    return true;
+  }
+  else return false;
+
+}
+
 export async function logout(session_token){
 
   var axiosObject = {};
   axiosObject['session_token'] = session_token;
 
-  var response = await axios.put(baseURL+'logout', axiosObject);
+  var response = await axios.post(baseURL+'logout', axiosObject);
 
   
 

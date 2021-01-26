@@ -42,6 +42,7 @@ function ExamView() {
 
   if (isLoaded)
     return (
+      
       <div class='App'>
         {/**Header  ***********/}
         <header className='header'>
@@ -74,7 +75,7 @@ function ExamView() {
   else return "Loading";
 }
 
-export default App;
+export default ExamView;
 
 /*
 1. Removed LeftPanel

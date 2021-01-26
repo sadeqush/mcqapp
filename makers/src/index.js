@@ -11,7 +11,7 @@ import LoginPage from "./components/Dashboard";
 
 //Test Imports
 import TestComponent from "./components/testComponent";
-var test = true;
+var test = false;
 
 if (test) {
   ReactDOM.render(
@@ -28,7 +28,7 @@ else {
   ReactDOM.render(
     <Provider store={store}>
       <React.StrictMode>
-        <App exam_id='exam0' />
+        <App/>
       </React.StrictMode>
     </Provider>,
     document.getElementById("root")
