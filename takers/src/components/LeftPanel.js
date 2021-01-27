@@ -6,6 +6,8 @@ import { List, Paper } from "@material-ui/core";
 function LeftPanel() {
   var answers = useSelector((store) => store.answers);
   var questions = useSelector((store) => store.questions);
+  const answersLength = Object.keys(answers).length;
+  const questionsLength = Object.keys(questions).length;
 
   const [selectedHeader, setSelectedHeader] = useState("question");
 
@@ -80,7 +82,9 @@ function LeftPanel() {
           {/* Badge  */}
           <p className='badge'>
             <i className='fa fa-circle'></i>
-            <span>3/15</span>
+            <span>
+              {answersLength}/{questionsLength}
+            </span>
           </p>
         </div>
 
