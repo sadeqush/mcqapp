@@ -71,12 +71,27 @@
   background: var(--white);
   margin: 1.5rem 0;
 }
-.msg{
+.message-visible{
   color: aliceblue;
-  background-color: var(--green);
-  padding: 1rem 1.98rem;
+  background-color: var(--red-dark);
   align-items: center;
-  margin-top: 4%;
+  opacity: 1;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: 1.2em;
+  padding-right: 1.1em;
+  margin-bottom: 1em;
+}
+
+.message-invisible{
+  color: aliceblue;
+  background-color: var(--red-dark);
+  align-items: center;
   opacity: 0;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: 1.2em;
+  padding-right: 1.1em;
+  margin-bottom: 1em;
 }
 

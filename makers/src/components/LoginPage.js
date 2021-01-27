@@ -4,6 +4,8 @@ import Cookies from 'universal-cookie';
 import InputBase from "@material-ui/core/InputBase";
 import { login, register } from "./api";
 
+import Spinner from "./Spinner"
+
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -22,6 +24,10 @@ function LoginPage() {
   const [emailCN, setEmailCN] = useState("id_text");
   const [pwCN, setPWCN] = useState("id_text");
 
+  const [spinnerVisibility, setSpinnerVisibility] = useState(false);
+  const [loginErrorVisibility, setLoginErrorVisibility] = useState("message-invisible");
+  const [errorMessage, setErrorMessage] = useState();
+
 
   const dispatch = useDispatch();
 
@@ -30,33 +36,31 @@ function LoginPage() {
 
   async function processLogin() {
     //Do Some email validation
+    setSpinnerVisibility(true);
     var session_token = await login(email, password);
-
     if(session_token){
-
       var action = {
         'type' : 'ADD_SESSION_TOKEN',
         'value' : session_token
       }
-
       dispatch(action);
-
+      action = {
+        'type' : "ADD_IS_LOGGED_IN",
+        'value' : true
+      }
+      dispatch(action);
       var cookie = new Cookies();
       cookie.set('session_token', session_token);
-      
       history.push(
         {
-          
           pathname : "/dashboard",
           isLoggedIn : true,
-
         }
-
       );
     }
 
     else{
-      ShowMessage("Error");
+      ShowMessage("Username or Password is Wrong");
     }
 
   }
@@ -69,13 +73,19 @@ function LoginPage() {
       ShowMessage("Successfully Registered, please login.")
     }
     else{
-      ShowMessage("Username is taken.");
+      ShowMessage("Username is taken");
     }
     
   }
 
+  function startSpinner(){
+    //Start the spinner
+  }
+
   function ShowMessage(message){
-    //This would populate an error box with the error message
+    setErrorMessage(message);
+    setSpinnerVisibility(false);
+    setLoginErrorVisibility('message-visible');
   }
 
   return (
@@ -86,8 +96,8 @@ function LoginPage() {
           src={logo}
           alt='Login Avatar'
         />
-        <div className="msg">
-          <p>You have logged in successfully!</p>
+        <div className={loginErrorVisibility}>
+          {errorMessage}
         </div>
 
         {/* Input elements */}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Dashboard-exam.css";
 
-function DashboardExam() {
+function DashboardExam(props) {
   // Display view more btn functionality
   const [viewMore, setViewMore] = useState(false);
   const viewMoreHandler = () =>

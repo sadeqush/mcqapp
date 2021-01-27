@@ -1,23 +1,25 @@
 import "./ExamView.css";
 import ExamArea from "./ExamArea";
-import { Grid, Hidden } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
 import { useDispatch } from "react-redux";
 import { SubmitTest, getExamID } from "./api";
 import Spinner from "./Spinner";
+import { useHistory } from "react-router-dom";
 
 const ADD_ID = "ADD_ID";
+const ADD_CREATION_TIME = 'ADD_CREATION_TIME';
 
 function ExamView() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [examID, setExamID] = useState("");
 
+  var history = useHistory();
+
   async function onInitialLoad() {
     var id = await getExamID();
     setExamID(id);
     dispatch(addExamIDAction(id));
+    dispatch(addExamCreationTime(Date.now()));
     setIsLoaded(true);
   }
 
@@ -33,17 +35,35 @@ function ExamView() {
     };
   }
 
+  function addExamCreationTime(value){
+    return {
+      type: ADD_CREATION_TIME,
+      id: "creation_time",
+      value: value,
+    };
+  }
+
+
+
   /**
    * Calls submittest from API.js
    * Adds a syntheic wait to make the user thing something is actually going on.
    */
-  function Finished() {
-    //SubmitTest();
+  async function Finished() {
+    //Show the modal
+      var submitsuccess = await SubmitTest();
+      console.log(submitsuccess, "SubmitSucecss");
+      if(submitsuccess){
+        history.push('/dashboard', {});
+      }
+      else{
+
+      }
   }
 
   if (isLoaded)
     return (
-      <div class='App'>
+      <div className='App'>
         {/**Header  ***********/}
         <header className='header'>
           <div className='container'>
@@ -58,7 +78,7 @@ function ExamView() {
               <span>Settings</span>
             </button>
 
-            <button onClick={() => Finished(3)} class='submit_button'>
+            <button onClick={() => Finished(3)} className='submit_button'>
               <i className='fa fa-paper-plane'></i>
               <span>Publish </span>
             </button>

@@ -13,7 +13,7 @@ function ErrorPage(props) {
           <i class="fa fa-bug"></i>
           <span className='oops'>Oops!</span>
           <h5 className='text'>{location.text?location.text:props.text }</h5>
-          <button className='goBackBtn' onClick={()=>history.goBack()}>Go Back</button>
+          <button className='goBackBtn' onClick={()=>history.goBack()}><b>Go Back</b></button>
       </div>
     )
   }

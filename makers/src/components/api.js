@@ -1,9 +1,9 @@
 import axios from "axios";
 import store from "./store";
-import 'universal-cookie';
 import Cookies from "universal-cookie";
 
 axios.defaults.timeout = 8000;
+
 var cookie = new Cookies();
 
 /**
@@ -12,6 +12,7 @@ var cookie = new Cookies();
 const baseURL = "https://us-central1-mcq-app-6cef8.cloudfunctions.net/app/";
 
 export async function SubmitTest() {
+  
   var fullstore = store.getState();
   var session_token = fullstore.session.session_token;
   var questions = { ...fullstore.questions };
@@ -22,12 +23,21 @@ export async function SubmitTest() {
   axiosObject["exam"] = { ...questions };
   axiosObject["exam_answers"] = { ...answers };
 
-
+try{
   var response = await axios.post(baseURL+'publish_exam', axiosObject);
+}
+catch{
+  return false;
+}
+
   response = response.data;
+  console.log(response);
 
   if (response.success) {
     return true;
+  }
+  else{
+    return false;
   }
 }
 
@@ -37,10 +47,6 @@ export async function getExamID() {
 
   var axiosObject = {};
   axiosObject["session_token"] = session_token;
-
-  console.log(baseURL+'generate_exam_id', "url"
-  );
-
   var response = await axios.post(baseURL+'generate_exam_id', axiosObject);
   response = response.data;
 
@@ -86,9 +92,14 @@ export async function register(email, password) {
   }
 }
 
+export async function getIsLoggedIn(){
+  var fullstore = store.getState();
+  var isLoggedIn = fullstore.session.isLoggedIn;
+  return isLoggedIn;
+}
+
 export async function checkSessionToken(session_token){
 
-  //return true;
   if(!session_token){
     var fullstore = store.getState();
     var session_token = fullstore.session.session_token;
@@ -109,16 +120,22 @@ export async function checkSessionToken(session_token){
 
 export async function logout(session_token){
 
+
+  if(!session_token){
+    var fullstore = await store.getState();
+    var session_token = fullstore.session.session_token;
+    console.log("Implicit session token");
+  }
+
   var axiosObject = {};
   axiosObject['session_token'] = session_token;
 
   var response = await axios.post(baseURL+'logout', axiosObject);
 
-  var response = await axios.put(baseURL + "logout", axiosObject);
-
   response = response.data;
 
   if (response.success) {
+    
     console.log("Logged Out");
     return true;
   }

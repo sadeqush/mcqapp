@@ -152,8 +152,8 @@ function McqQuestion(props) {
         disableRipple={true}
         onClick={(e) => recordAnswer(checkBox_id, e)}
         style={{ color: "#FCA311", outline: "none" }}
-        icon={<CheckBoxIcon fontSize='medium' style={{ color: "#D9D9D9" }} />}
-        checkedIcon={<CheckBoxIcon fontSize='medium' />}
+        icon={<CheckBoxIcon fontSize='small' style={{ color: "#D9D9D9" }} />}
+        checkedIcon={<CheckBoxIcon fontSize='small' />}
       />
     );
   }
@@ -191,7 +191,7 @@ function McqQuestion(props) {
 
   function mcqChoiceGeneratingFunc() {
     return (
-      <div class='Opt'>
+      <div className='Opt'>
         <FormGroup>
           <InputBase
             endAdornment={checkb("a")}
@@ -235,13 +235,13 @@ function McqQuestion(props) {
   }
 
   return (
-    <Paper class='Question'>
-      <form class='Question-form'>
+    <Paper className='Question'>
+      <form className='Question-form'>
         <div className='Question-id'>
           <i className='fa fa-pencil editpencil'></i>
           <input
             type='text'
-            class='questionedit'
+            className='questionedit'
             autoComplete='off'
             onChange={(e) => titleOnInputFunc(e.target.value)}
             defaultValue={"Question " + props.id}
@@ -260,7 +260,7 @@ function McqQuestion(props) {
         </div>
 
         {/* What is it? */}
-        <div class='Question-error'>{/* Put dialogs or Error here */}</div>
+        <div className='Question-error'>{/* Put dialogs or Error here */}</div>
 
         {mcqChoiceGeneratingFunc()}
       </form>

@@ -5,6 +5,10 @@ const ADD_ANSWER = 'ADD_ANSWER';
 const ADD_TITLE  = 'ADD_TITLE';
 const ADD_ID = 'ADD_ID';
 const ADD_SESSION_TOKEN = 'ADD_SESSION_TOKEN';
+const ADD_QUES_COUNT = 'ADD_QUES_COUNT';
+const ADD_CREATION_TIME = 'ADD_CREATION_TIME';
+const ADD_IS_LOGGED_IN = "ADD_IS_LOGGED_IN";
+
 
 function addQuestionReducer(state = {}, action){
 
@@ -46,13 +50,19 @@ function addPropertyReducer(state = {}, action){
         case ADD_ID:
             retval[action.id] = action.value;
             return retval;
+        case ADD_QUES_COUNT:
+            retval[action.id] = action.value;
+            return retval;
+        case ADD_CREATION_TIME:
+            retval[action.id] = action.value;
+            return retval;
         default:
             return state;
     }
 
 }
 
-function addSessionReducer(state = {"session_token" : "2a10lCBYQd6XPxdNM33WMDN8OCyHdmzNwcct02Ib9sLwhNV2tNKrCuS"}, action){
+function addSessionReducer(state = {}, action){
 
     var retval = {...state};
 
@@ -60,6 +70,9 @@ function addSessionReducer(state = {"session_token" : "2a10lCBYQd6XPxdNM33WMDN8O
 
         case ADD_SESSION_TOKEN:
             retval['session_token'] = action.value;
+            return retval;
+        case ADD_IS_LOGGED_IN:
+            retval['isLoggedIn'] = action.value;
             return retval;
         default:
             return state;

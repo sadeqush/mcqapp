@@ -13,9 +13,9 @@ function App() {
     var routes = [
         <Router>
             <Switch>
+            <Route exact path="/"><LoginPage/></Route>
             <Route exact path ="/dashboard"><Dashboard/></Route>
             <Route exact path="/exam_editor"><ExamView/></Route>
-            <Route exact path="/"><LoginPage/></Route>
             <Route><ErrorPage/></Route>
             </Switch>
         </Router>

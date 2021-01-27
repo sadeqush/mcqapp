@@ -3,25 +3,40 @@ import React, { useEffect, useState, useLayoutEffect } from "react";
 import "./Dashboard.css";
 import Exam from "./Dashboard-exam";
 import ErrorPage from './ErrorPage'
-import {checkSessionToken} from './api'
+import {getIsLoggedIn, logout} from './api'
 import { useHistory } from "react-router-dom";
 
 function Dashboard() {
   // Toggler
   const [toggleDrawer, setToggleDrawer] = useState(true);
-  const [isLoaded, setIsLoaded ] = useState(false);
+  const [isLoaded, setIsLoaded ] = useState(true);
 
   let history = useHistory();
 
   useEffect(onInnitialLoad, []);
 
   async function onInnitialLoad(){
+    var isLoggedin = await getIsLoggedIn();
 
-    var isLoggedin = await checkSessionToken();
     //Get more information here.
-    if(isLoggedin){
-      setIsLoaded(true);
+    if(!isLoggedin){
+      setIsLoaded(false);
     }
+
+  }
+
+  async function LogoutButtonHandler(){
+
+    var isLoggedOut = await logout();
+    if(isLoggedOut){
+      history.push(
+        {
+          pathname : "/",
+          isLoggedIn : false,
+        }
+      );
+    }
+
 
   }
   
@@ -30,6 +45,8 @@ function Dashboard() {
   let pushLeft;
 
   toggleDrawer ? (pushLeft = { left: "0rem" }) : (pushLeft = { left: "-100%" });
+
+
 
   function createExamButtonOnClick(){
     history.push(
@@ -40,7 +57,8 @@ function Dashboard() {
   }
 
 
-  console.log(isLoaded);
+if(isLoaded){
+  
 
   return (
     <div className='Dashboard'>
@@ -78,7 +96,7 @@ function Dashboard() {
           </div>
         </div>
 
-        <button className='logout'>Log out</button>
+        <button className='logout' onClick={()=>LogoutButtonHandler()}>Log out</button>
       </div>
 
       {/* Exam boards ******************/}
@@ -97,7 +115,7 @@ function Dashboard() {
 
         {/* All the exams *********/}
         <div className='Dashboard-boards'>
-          <Exam />
+          <Exam title="ECO 486: Homework Quiz 5" created_date="16 January, 2021" nques={40}/>
           <Exam />
           <Exam />
           <Exam />
@@ -105,6 +123,14 @@ function Dashboard() {
       </div>
     </div>
   );
+}
+
+else {
+  return(
+  <ErrorPage text="You're not logged in"/>
+  );
+
+}
 }
 
 export default Dashboard;
