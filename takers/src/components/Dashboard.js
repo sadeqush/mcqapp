@@ -77,6 +77,8 @@ function Dashboard() {
           <Exam />
           <Exam />
           <Exam />
+          <Exam />
+          <Exam />
         </div>
       </div>
     </div>

@@ -20,12 +20,7 @@ function ExamArea() {
     );
   }
 
-  return (
-    <div className='ExamArea'>
-      {mcqQuestionList}
-      Is there ay
-    </div>
-  );
+  return <div className='ExamArea'>{mcqQuestionList}</div>;
 }
 
 export default ExamArea;
