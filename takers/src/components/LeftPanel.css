@@ -24,7 +24,7 @@
   font-size: 1rem;
   margin-right: 0.5rem;
   transition: all 0.5s linear;
-  animation: flash 1.5s infinite;
+  animation: flash 1s alternate infinite;
 }
 
 .leftpanel_quickview {

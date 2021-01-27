@@ -1,3 +1,5 @@
 .ExamArea {
-  margin-top: 8rem;
+  padding: 2rem 0;
+  position: relative;
+  top: 6rem;
 }

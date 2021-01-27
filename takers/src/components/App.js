@@ -8,6 +8,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import LeftPanel from "./LeftPanel";
 import { useDispatch, useSelector } from "react-redux";
 import { getExam } from "./api";
+import Spinner from "./Spinner";
 
 /*
 
@@ -84,7 +85,7 @@ function App(props) {
     /*This gets rendered when the fetch method is still getting the response from the API call */
     return (
       <div class='App loading'>
-        <CircularProgress style={{ color: "#FCA311" }}></CircularProgress>
+        <Spinner />
       </div>
     );
   }
@@ -94,23 +95,6 @@ export default App;
 
 /*
 1. Replace AppBar with Header tag
-
-*/
-
-/*
-<Grid item xs={12}>
-            <AppBar style={{ background: "#14213D", position: "fixed" }}>
-              <Toolbar>
-                <b>{property["title"]}</b>
-                {/*CSS for the submit button is in App.css*
-                <button
-                  onClick={() => console.log("answers")}
-                  class='submit_button'
-                >
-                  Submit
-                </button>
-              </Toolbar>
-            </AppBar>
-          </Grid>
+2. Added Spinner
 
 */

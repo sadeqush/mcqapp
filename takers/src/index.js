@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import store from "./components/store";
 import "font-awesome/css/font-awesome.min.css";
 
-import LoginScreen from "./components/Dashboard";
+import LoginScreen from "./components/App";
 
 ReactDOM.render(
   <Provider store={store}>
