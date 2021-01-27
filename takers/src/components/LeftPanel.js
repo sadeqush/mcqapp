@@ -81,10 +81,16 @@ function LeftPanel() {
 
           {/* Badge  */}
           <p className='badge'>
-            <i className='fa fa-circle'></i>
-            <span>
-              {answersLength}/{questionsLength}
-            </span>
+            {answersLength === questionsLength ? (
+              <span>All Answered</span>
+            ) : (
+              <div>
+                <i className='fa fa-circle'></i>
+                <span>
+                  {answersLength}/{questionsLength}
+                </span>
+              </div>
+            )}
           </p>
         </div>
 

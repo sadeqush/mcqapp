@@ -9,6 +9,7 @@ import LeftPanel from "./LeftPanel";
 import { useDispatch, useSelector } from "react-redux";
 import { getExam } from "./api";
 import Spinner from "./Spinner";
+import Modal from "./Modal";
 
 /*
 
@@ -31,6 +32,10 @@ function App(props) {
     }
   }
 
+  const [showModal, setShowModal] = useState(false);
+  const toggleModal = () =>
+    showModal ? setShowModal(false) : setShowModal(true);
+
   const [isLoaded, setIsLoaded] = useState(false);
 
   async function onLoadFunc(examID) {
@@ -48,6 +53,13 @@ function App(props) {
   if (isLoaded) {
     return (
       <div className='App' id='App'>
+        {showModal && (
+          <Modal close={toggleModal}>
+            <h1>Are you sure?</h1>
+            <button className='submit_button'>YESSSSSSSSSSSS</button>
+          </Modal>
+        )}
+
         <Grid container spacing={0} display='inline'>
           {/**Header  ***********/}
           <Grid item xs={12}>
@@ -58,10 +70,7 @@ function App(props) {
                   <b>{property["title"]}</b>
                 </p>
 
-                <button
-                  onClick={() => console.log("Submitted")}
-                  class='submit_button'
-                >
+                <button onClick={toggleModal} class='submit_button'>
                   Submit Test
                 </button>
               </div>
