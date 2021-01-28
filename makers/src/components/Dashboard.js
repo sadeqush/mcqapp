@@ -169,3 +169,23 @@ export default Dashboard;
 1. fixed the drawer to the left with a width of 22.5rem/225px.
 2. The Exam will come from Dashboard-exam.js which will get data from the api
 */
+
+/*
+content = {listArr.length === 0 ? 
+(<div className='no-exam'>
+  <h3>
+    No exam was created. Create a new exam.
+  </h3>
+</div>) : 
+(<div>
+  {listArr.map(el => {
+    <Exam 
+    key={el.id}
+      title={el.title}
+    created_date={el.date}
+    nques={el.amount}/>
+  })}
+  
+</div>)} 
+
+*/
