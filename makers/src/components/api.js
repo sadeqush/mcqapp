@@ -9,19 +9,23 @@ var cookie = new Cookies();
 /**
  * Base URL of the API Endpoint.
  */
-const baseURL = "https://us-central1-mcq-app-6cef8.cloudfunctions.net/app/";
+//const baseURL = "https://us-central1-mcq-app-6cef8.cloudfunctions.net/app/";
+const baseURL = "http://localhost:6969/"
 
 export async function SubmitTest() {
   
   var fullstore = store.getState();
   var session_token = fullstore.session.session_token;
   var questions = { ...fullstore.questions };
+  var property = {...fullstore.property};
   var answers = { ...fullstore.answers };
 
   var axiosObject = {};
   axiosObject["session_token"] = session_token;
   axiosObject["exam"] = { ...questions };
   axiosObject["exam_answers"] = { ...answers };
+  axiosObject['property'] = property;
+  axiosObject["examID"] = fullstore.property.examID;
 
 try{
   var response = await axios.post(baseURL+'publish_exam', axiosObject);
@@ -37,6 +41,7 @@ catch{
     return true;
   }
   else{
+    console.log(response.error_message);
     return false;
   }
 }
@@ -139,4 +144,41 @@ export async function logout(session_token){
     console.log("Logged Out");
     return true;
   }
+}
+
+
+export async function getExamProperty(examID){
+  
+  var fullstore = store.getState();
+  var session_token = fullstore.session.session_token;
+  console.log("Implicit session token");
+  
+  var axiosObject = {}
+  axiosObject['session_token'] = session_token;
+  axiosObject['examID'] = examID;
+
+  var retval = await axios.post(baseURL+'get_exam_property', axiosObject);
+  return retval.data;
+
+}
+
+
+export async function getAllExamList(session_token){
+
+  if(!session_token){
+    var fullstore = store.getState();
+    var session_token = fullstore.session.session_token;
+    console.log("Implicit session token");
+  }
+
+  var axiosObject = {};
+
+  axiosObject['session_token'] = session_token;
+
+  try{var response = await axios.post(baseURL+'get_all_exam_list', axiosObject);}
+  catch {return false}
+  response = response.data;
+
+  return response;
+
 }

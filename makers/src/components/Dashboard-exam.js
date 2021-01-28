@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./Dashboard-exam.css";
+import {getExamProperty} from './api'
 
 function DashboardExam(props) {
   // Display view more btn functionality
   const [viewMore, setViewMore] = useState(false);
+  const [property, setProperty] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+
   const viewMoreHandler = () =>
     !viewMore ? setViewMore(true) : setViewMore(false);
   const viewMoreBtn = viewMore ? (
@@ -12,15 +16,24 @@ function DashboardExam(props) {
 
   const copyValueHandler = () => console.log("Copy func");
 
+  var examProperty =  getExamProperty(props.examID, setIsLoaded);
+
+  while(!isLoaded){
+    null(0);
+  }
+
+  setProperty(examProperty);
+
+
   return (
     <div className='Dashboard-board'>
       <div className='top'>
         <div className='board-content'>
-          <h3>ECO 486: Homework Quiz 5</h3>
+          <h3>{property.title}</h3>
           <p>
-            Created: <span>16 January, 2021</span>
+            Created: <span>{property.creation_time}</span>
           </p>
-          <p>40 Multiple Choice Questions</p>
+          <p>{property.ques_count} Multiple Choice Questions</p>
         </div>
         <div className='dots' onClick={viewMoreHandler}>
           <i className='fa fa-ellipsis-h'>
@@ -31,7 +44,7 @@ function DashboardExam(props) {
       </div>
       <div className='board-settings'>
         <p className='exam-id' onClick={copyValueHandler}>
-          Exam id: <span>NF453</span>
+          Exam id: <span>{property.examID}</span>
         </p>
 
         <div className='board-settings-right'>
