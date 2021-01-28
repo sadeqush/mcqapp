@@ -8,6 +8,46 @@
   min-height: 100vh;
 }
 
+.exam-title-wrapper {
+  width: 100%;
+  max-width: 50rem;
+  margin: 1rem 0 2rem 0;
+  padding: 1.5rem 2rem;
+  display: flex;
+  background: var(--white);
+  border-radius: var(--radius-min);
+}
+
+.exam-title-wrapper > * {
+  border: 1px solid var(--gray);
+  padding: 0.5rem;
+}
+.exam-title-wrapper.focused > * {
+  border-color: var(--yellow);
+}
+
+.exam-title-wrapper label {
+  border-right: 0;
+  width: 15rem;
+  font-size: 1.5rem;
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+}
+.exam-title-wrapper label i {
+  margin-right: 1rem;
+  font-size: 1.4rem;
+}
+
+.exam-title {
+  border-left: 0;
+  width: 100%;
+  padding-left: 1rem;
+  font-size: 1.5rem;
+  outline-color: var(--yellow);
+  outline: 0;
+}
+
 .add_another_question_button {
   background-color: var(--yellow);
   color: var(--white);

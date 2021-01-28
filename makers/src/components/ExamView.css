@@ -43,6 +43,9 @@
   font-size: 2rem;
   color: var(--white);
 }
+.back_button_wrapper:hover .back_button i {
+  color: var(--yellow);
+}
 
 .App .header .container p {
   margin-right: auto;
