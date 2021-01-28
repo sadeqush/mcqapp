@@ -1,14 +1,14 @@
-/*  profile 
+/*  settings 
 *****************************************/
 
 /*
 To make everything look nicer:
-1. remove disabled from profile.js
-2. .profile-form > * {border: 1px solid var(--yellow);}
+1. remove disabled from Settings.js
+2. .settings-form > * {border: 1px solid var(--yellow);}
 3. remove background from .input-box 
 */
 
-.profile {
+.settings {
   width: 90%;
   max-width: 80rem;
   height: calc(90vh - 10rem);
@@ -17,7 +17,7 @@ To make everything look nicer:
   place-items: center;
 }
 
-.profile-form {
+.settings-form {
   background: var(--white);
   width: 100%;
   max-width: 40rem;
@@ -29,7 +29,7 @@ To make everything look nicer:
   justify-content: center;
 }
 
-.profile-form > * {
+.settings-form > * {
   border: 1px solid var(--gray);
   width: 100%;
   max-width: 25rem;
@@ -52,22 +52,22 @@ To make everything look nicer:
 }
 
 .input-box input:disabled,
-.profile-form-submit:disabled,
-.profile-form button:hover:disabled {
+.settings-form-submit:disabled,
+.settings-form button:hover:disabled {
   border: 0;
   background: var(--gray);
   color: #777777;
   cursor: not-allowed;
 }
 
-.profile-form-submit {
+.settings-form-submit {
   background: var(--yellow);
   color: var(--white);
   font-weight: bold;
   padding: 1.25rem;
   transition: background var(--transition);
 }
-.profile-form-submit:hover {
+.settings-form-submit:hover {
   background: var(--yellow-light);
 }
 

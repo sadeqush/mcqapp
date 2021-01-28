@@ -1,9 +1,9 @@
-import { AppBar, Toolbar } from "@material-ui/core";
 import React, { useEffect, useState, useLayoutEffect } from "react";
 import "./Dashboard.css";
 import Exam from "./Dashboard-exam";
 import ErrorPage from "./ErrorPage";
 import Profile from "./Profile";
+import Settings from "./Settings";
 import { getIsLoggedIn, logout } from "./api";
 import { useHistory } from "react-router-dom";
 
@@ -20,6 +20,9 @@ function Dashboard() {
         break;
       case "profile":
         setShowContent("profile");
+        break;
+      case "settings":
+        setShowContent("settings");
         break;
 
       default:
@@ -78,6 +81,8 @@ function Dashboard() {
     );
   } else if (showContent === "profile") {
     content = <Profile />;
+  } else if (showContent === "settings") {
+    content = <Settings />;
   }
 
   if (!isLoaded) {
@@ -117,7 +122,10 @@ function Dashboard() {
               <span>Exams</span>
             </div>
 
-            <div className='tabs'>
+            <div
+              className={showContent === "settings" ? "tabs-active" : "tabs"}
+              onClick={() => changeContentHandler("settings")}
+            >
               <i className='fa fa-cog'></i>
               <span>Settings</span>
             </div>

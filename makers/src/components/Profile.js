@@ -4,9 +4,13 @@ import "./Profile.css";
 const profile = () => (
   <div className='profile '>
     <form className='profile-form'>
-      <input type='text' disabled placeholder='Your Full Name' />
+      <div className='input-box'>
+        <i className='fa fa-user'></i>
+        <input type='text' placeholder='Your Full Name' disabled />
+      </div>
+
       <button type='submit' disabled className='profile-form-submit'>
-        Submit
+        Submit Changes
       </button>
     </form>
   </div>
