@@ -7,7 +7,7 @@ import Spinner from "./Spinner";
 import { useHistory } from "react-router-dom";
 
 const ADD_ID = "ADD_ID";
-const ADD_CREATION_TIME = 'ADD_CREATION_TIME';
+const ADD_CREATION_TIME = "ADD_CREATION_TIME";
 
 function ExamView() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -35,7 +35,7 @@ function ExamView() {
     };
   }
 
-  function addExamCreationTime(value){
+  function addExamCreationTime(value) {
     return {
       type: ADD_CREATION_TIME,
       id: "creation_time",
@@ -43,23 +43,20 @@ function ExamView() {
     };
   }
 
-
-
   /**
    * Calls submittest from API.js
    * Adds a syntheic wait to make the user thing something is actually going on.
    */
   async function Finished() {
     //Show the modal
-      var submitsuccess = await SubmitTest();
-      console.log(submitsuccess, "SubmitSucecss");
-      if(submitsuccess){
-        history.push('/dashboard', {});
-      }
-      else{
-
-      }
+    var submitsuccess = await SubmitTest();
+    console.log(submitsuccess, "SubmitSucecss");
+    if (submitsuccess) {
+      history.push("/dashboard", {});
+    } else {
+    }
   }
+  console.log(history);
 
   if (isLoaded)
     return (
@@ -67,6 +64,12 @@ function ExamView() {
         {/**Header  ***********/}
         <header className='header'>
           <div className='container'>
+            <div className='back_button_wrapper'>
+              <button className='back_button' onClick={() => history.goBack()}>
+                <i className='fa fa-chevron-circle-left'></i>
+                <span className='sr-only'>Go Back</span>
+              </button>
+            </div>
             <p>
               <i className='fa fa-book'></i>
               <b>{"Exam ID : " + examID}</b>
@@ -75,7 +78,7 @@ function ExamView() {
             {/* Settings *****************/}
             <button className='settings_button'>
               <i className='fa fa-cog'></i>
-              <span>Settings</span>
+              <span className='settings_button_text'>Settings</span>
             </button>
 
             <button onClick={() => Finished(3)} className='submit_button'>

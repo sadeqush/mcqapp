@@ -59,21 +59,20 @@
   font-size: 1.4rem;
 }
 
-.Option-unselected {
+.Option-unselected,
+.Option-selected {
   margin: 0.5rem 0;
   border: 1px solid var(--gray);
   border-left: none;
   width: 100%;
 }
 .Option-selected {
-  margin: 0.5rem 0;
-  border: 1px solid var(--yellow);
-  border-left: none;
-  width: 100%;
+  border-color: var(--yellow);
 }
 
 /* a/b/c/d */
-.selector-unselected {
+.selector-unselected,
+.selector-selected {
   border: 1px solid var(--gray);
   border-top: 0;
   border-bottom: 0;
@@ -83,37 +82,5 @@
 }
 
 .selector-selected {
-  border: 1px solid var(--yellow);
-  border-top: 0;
-  border-bottom: 0;
-  margin-right: 0.5em;
-  padding: 1.1rem 0.75rem;
-  font-size: 1.4rem;
+  border-color: var(--yellow);
 }
-
-/* Don't know what it's doing here! 
-.correct_answer-text {
-  color: #898989;
-  border: 1px solid salmon;
-}
-
-.answer-option-text {
-  display: inline;
-  margin-left: 1em;
-  background: red;
-}
-
-
-.isanswer-checkbox {
-  margin-right: 0.6em;
-  cursor: pointer;
-  height: 25px;
-  width: 25px;
-  border: 1px solid red;
-}
-
-.isanswer-checkbox:checked {
-  background: red;
-}
-
-*/
