@@ -85,7 +85,7 @@ function Dashboard() {
     content = <Settings />;
   }
 
-  if (!isLoaded) {
+  if (isLoaded) {
     return (
       <div className='Dashboard'>
         {/* Drawer *********************/}

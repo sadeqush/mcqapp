@@ -56,6 +56,7 @@ function ExamView() {
     } else {
     }
   }
+  console.log(history);
 
   if (isLoaded)
     return (
@@ -64,7 +65,7 @@ function ExamView() {
         <header className='header'>
           <div className='container'>
             <div className='back_button_wrapper'>
-              <button className='back_button'>
+              <button className='back_button' onClick={() => history.goBack()}>
                 <i className='fa fa-chevron-circle-left'></i>
                 <span className='sr-only'>Go Back</span>
               </button>
