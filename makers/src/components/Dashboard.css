@@ -51,19 +51,20 @@
 }
 
 .Dashboard-drawer .tabs,
-.Dashboard-drawer .tabs {
+.Dashboard-drawer .tabs-active {
+  cursor: pointer;
   background: var(--blue-light);
   height: 5rem;
   padding-left: 2rem;
   display: flex;
   align-items: center;
 }
-.Dashboard-drawer .tabs.active {
+.Dashboard-drawer .tabs-active {
   background: var(--yellow);
 }
 
 .Dashboard-drawer .tabs span,
-.Dashboard-drawer .tabs span {
+.Dashboard-drawer .tabs-active span {
   margin-left: 1rem;
 }
 

@@ -29,6 +29,21 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.back_button {
+  background: transparent;
+  border-radius: var(--radius-full);
+  margin-right: 1rem;
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  place-items: center;
+}
+.back_button i {
+  font-size: 2rem;
+  color: var(--white);
+}
+
 .App .header .container p {
   margin-right: auto;
 }
@@ -62,4 +77,13 @@
 
 .App .exams {
   margin-top: 6rem;
+}
+
+/*    Responsive 
+**********************************/
+@media (max-width: 500px) {
+  .back_button_wrapper,
+  .settings_button_text {
+    display: none;
+  }
 }

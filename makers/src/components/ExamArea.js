@@ -13,8 +13,7 @@ Things to do:
 2. Add a way to record the correct answer.
 */
 
-const ADD_QUES_COUNT = 'ADD_QUES_COUNT';
-
+const ADD_QUES_COUNT = "ADD_QUES_COUNT";
 
 function ExamArea() {
   const [currentQuesID, setCurrentQuesID] = useState(2);
@@ -26,14 +25,14 @@ function ExamArea() {
     setCurrentQuesID(currentQuesID + 1);
   }
 
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  function addQuesIDAction(value){
+  function addQuesIDAction(value) {
     return {
       type: ADD_QUES_COUNT,
-      id : "ques_count",
-      value: value
-    }
+      id: "ques_count",
+      value: value,
+    };
   }
 
   return (
