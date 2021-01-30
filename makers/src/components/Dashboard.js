@@ -6,6 +6,7 @@ import Profile from "./Profile";
 import Settings from "./Settings";
 import { getIsLoggedIn, logout } from "./api";
 import { useHistory } from "react-router-dom";
+import spinner from "./Spinner";
 
 function Dashboard() {
   // Toggler
@@ -33,16 +34,15 @@ function Dashboard() {
 
   let history = useHistory();
 
-  useEffect(onInnitialLoad, []);
-
-  async function onInnitialLoad() {
-    var isLoggedin = await getIsLoggedIn();
-
-    //Get more information here.
-    if (!isLoggedin) {
-      setIsLoaded(false);
-    }
-  }
+  /* useEffect( () => {
+    async function onInnitialLoad() {
+      var isLoggedin = await getIsLoggedIn();
+      //Get more information here.
+      if (!isLoggedin) {
+        setIsLoaded(false);
+      }
+  } onInnitialLoad();
+} , []); */
 
   async function LogoutButtonHandler() {
     var isLoggedOut = await logout();
@@ -85,7 +85,7 @@ function Dashboard() {
     content = <Settings />;
   }
 
-  if (isLoaded) {
+  if(isLoaded){
     return (
       <div className='Dashboard'>
         {/* Drawer *********************/}
@@ -159,6 +159,7 @@ function Dashboard() {
       </div>
     );
   } else {
+
     return <ErrorPage text="You're not logged in" />;
   }
 }

@@ -9,8 +9,8 @@ var cookie = new Cookies();
 /**
  * Base URL of the API Endpoint.
  */
-//const baseURL = "https://us-central1-mcq-app-6cef8.cloudfunctions.net/app/";
-const baseURL = "http://localhost:6969/"
+const baseURL = "https://us-central1-mcq-app-6cef8.cloudfunctions.net/app/";
+//const baseURL = "http://localhost:6969/"
 
 export async function SubmitTest() {
   
@@ -100,6 +100,12 @@ export async function register(email, password) {
 export async function getIsLoggedIn(){
   var fullstore = store.getState();
   var isLoggedIn = fullstore.session.isLoggedIn;
+
+  //Checking for cookie's session token.
+  if(!isLoggedIn){
+    var session_token = cookie.get('session_token');
+    isLoggedIn = await checkSessionToken(session_token);
+  }
   return isLoggedIn;
 }
 
@@ -116,7 +122,7 @@ export async function checkSessionToken(session_token){
   var response = await axios.post(baseURL+'authenticate_sessiontoken', axiosObject);
   response  = response.data;
 
-  if(response.success){
+  if(response.isAuthenticated){
     return true;
   }
   else return false;

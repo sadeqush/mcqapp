@@ -16,13 +16,11 @@ function DashboardExam(props) {
 
   const copyValueHandler = () => console.log("Copy func");
 
-  var examProperty =  getExamProperty(props.examID, setIsLoaded);
+  //var examProperty =  getExamProperty(props.examID, setIsLoaded);
 
-  while(!isLoaded){
-    null(0);
-  }
 
-  setProperty(examProperty);
+
+  //setProperty(examProperty);
 
 
   return (
