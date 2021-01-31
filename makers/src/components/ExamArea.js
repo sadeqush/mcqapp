@@ -14,12 +14,14 @@ Things to do:
 */
 
 const ADD_QUES_COUNT = "ADD_QUES_COUNT";
+const ADD_TITLE  = 'ADD_TITLE';
 
 function ExamArea() {
   const [currentQuesID, setCurrentQuesID] = useState(2);
   const [mcqQuestionIDList, setmcqQuestionIDList] = useState([1]);
   const [focusExamTitle, setFocusExamTitle] = useState(false);
   const [examTitle, setExamTitle] = useState("Exam Title");
+
 
   function addAnotherQuestion() {
     setmcqQuestionIDList(mcqQuestionIDList.concat(currentQuesID));
@@ -37,9 +39,21 @@ function ExamArea() {
     };
   }
 
+  function addTitleAction(value) {
+    var retval = {
+      'type': ADD_TITLE,
+      'id': 'title',
+      'value': value,
+    };
+
+    return retval;
+  }
+
   const examTitleHandler = (e) => {
     setExamTitle(e.target.value);
-    console.log(e.target.value);
+    var value = e.target.value;
+    var action = addTitleAction(value);
+    dispatch(action);
   };
 
   return (

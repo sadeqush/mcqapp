@@ -20,6 +20,7 @@ import logo from './mcqappAvatar-01.png';
 3. all the elements inside the form has some margin & padding.
 */
 function LoginPage() {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailCN, setEmailCN] = useState("id_text");
@@ -41,40 +42,19 @@ function LoginPage() {
   } onInnitialLoad();
 } , []);
 
-  const dispatch = useDispatch();
-
   let history = useHistory();
 
   async function processLogin() {
     //Do Some email validation
     toggleSpinner();
     var session_token = await login(email, password);
-    if(session_token){
-
-      var action = {
-        'type' : 'ADD_SESSION_TOKEN',
-        'value' : session_token
-      }
-
-      dispatch(action);
-
-      action = {
-        'type' : "ADD_IS_LOGGED_IN",
-        'value' : true
-      }
-
-      dispatch(action);
-
-      var cookie = new Cookies();
-      cookie.set('session_token', session_token);
-
+    if(session_token){      
       history.push(
         {
           pathname : "/dashboard",
           isLoggedIn : true,
         }
       );
-      
     }
 
     else{
@@ -163,13 +143,20 @@ function LoginPage() {
       }
     );
     return (
-      <Spinner/>
+      <div>
+      <Spinner className='loading'/>
+    </div>
     );
   }
+
   //This else statement runs if user is logged in (authenticated via cookie)
   else{
     return (
-      <Spinner/>
+      <div>
+        <Spinner className='loading'/>
+      </div>
+      
+      
     );
   }
 }

@@ -16,11 +16,14 @@ function DashboardExam(props) {
 
   const copyValueHandler = () => console.log("Copy func");
 
-  //var examProperty =  getExamProperty(props.examID, setIsLoaded);
 
+  useEffect( () => {
+    async function funcccc() {
+      var examProperty =  await getExamProperty(props.examID);
+      setProperty(examProperty);
+  } funcccc();
+  } , []); 
 
-
-  //setProperty(examProperty);
 
 
   return (
@@ -29,7 +32,7 @@ function DashboardExam(props) {
         <div className='board-content'>
           <h3>{property.title}</h3>
           <p>
-            Created: <span>{property.creation_time}</span>
+            Created: <span>{Date(property.creation_time)}</span>
           </p>
           <p>{property.ques_count} Multiple Choice Questions</p>
         </div>
@@ -42,7 +45,7 @@ function DashboardExam(props) {
       </div>
       <div className='board-settings'>
         <p className='exam-id' onClick={copyValueHandler}>
-          Exam id: <span>{property.examID}</span>
+          Exam id: <span>{props.examID}</span>
         </p>
 
         <div className='board-settings-right'>

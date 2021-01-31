@@ -112,3 +112,7 @@
 .spinner-active{
   display: block;
 }
+
+.loading{
+  padding-top: 5em;
+}
