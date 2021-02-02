@@ -165,6 +165,7 @@ export async function getIsLoggedIn(){
       return true;
     }
     else{
+      cookie.remove('session_token');
       return false;
     }
   }
@@ -215,6 +216,7 @@ export async function logout(session_token){
     }
     store.dispatch(action);
     console.log("Logged Out");
+    cookie.remove('session_token');
     return true;
   }
 }
