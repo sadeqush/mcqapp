@@ -67,7 +67,6 @@
 .Dashboard-drawer .tabs-active span {
   margin-left: 1rem;
 }
-
 .Dashboard-drawer .logout {
   align-self: center;
   padding: 0.5rem 2rem;
@@ -80,6 +79,7 @@
 .Dashboard-drawer .logout:hover {
   background: var(--yellow);
   border-color: var(--yellow);
+  
 }
 
 /* Boards 
@@ -130,6 +130,10 @@
 }
 .Dashboard-content .header button span {
   margin-left: 0.5rem;
+}
+
+.spinner {
+  padding-top: 5em;
 }
 
 .Dashboard-boards {

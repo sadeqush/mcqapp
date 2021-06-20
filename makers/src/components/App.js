@@ -21,7 +21,7 @@ function App() {
           <ExamView />
         </Route>
         <Route>
-          <ErrorPage />
+          <ErrorPage text="Error 404 : Page doesn't Exist" />
         </Route>
       </Switch>
     </Router>,

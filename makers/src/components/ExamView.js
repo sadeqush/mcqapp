@@ -56,7 +56,6 @@ function ExamView() {
     } else {
     }
   }
-  console.log(history);
 
   if (isLoaded)
     return (

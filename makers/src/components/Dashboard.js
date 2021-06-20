@@ -1,17 +1,22 @@
-import React, { useEffect, useState, useLayoutEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Dashboard.css";
 import Exam from "./Dashboard-exam";
 import ErrorPage from "./ErrorPage";
 import Profile from "./Profile";
 import Settings from "./Settings";
-import { getIsLoggedIn, logout } from "./api";
+import { getIsLoggedIn, logout, getAllExamList } from "./api";
 import { useHistory } from "react-router-dom";
+import Spinner from "./Spinner";
+
+
+
 
 function Dashboard() {
-  // Toggler
   const [toggleDrawer, setToggleDrawer] = useState(true);
-  const [isLoaded, setIsLoaded] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showContent, setShowContent] = useState("exams");
+  const [examList, setExamList] = useState([]);
 
   const changeContentHandler = (newState) => {
     switch (newState) {
@@ -31,20 +36,39 @@ function Dashboard() {
     }
   };
 
+
+
   let history = useHistory();
 
-  useEffect(onInnitialLoad, []);
 
-  async function onInnitialLoad() {
-    var isLoggedin = await getIsLoggedIn();
 
-    //Get more information here.
-    if (!isLoggedin) {
-      setIsLoaded(false);
+
+  useEffect( () => {
+    async function onInnitialLoad() {
+
+      var tempisLoggedin = await getIsLoggedIn();
+      setIsLoggedIn(tempisLoggedin);
+
+      if(tempisLoggedin) {
+        var tempexamList = await getAllExamList();
+        if(!tempexamList){
+          setIsLoggedIn(false);
+          setIsLoaded(true);
+        }
+        else{
+          setExamList(tempexamList);
+          setIsLoaded(true);}
+       }
+
     }
-  }
 
-  async function LogoutButtonHandler() {
+ onInnitialLoad();
+} , []); 
+
+
+
+
+async function LogoutButtonHandler() {
     var isLoggedOut = await logout();
     if (isLoggedOut) {
       history.push({
@@ -69,14 +93,11 @@ function Dashboard() {
   if (showContent === "exams") {
     content = (
       <div>
-        <Exam
-          title='ECO 486: Homework Quiz 5'
-          created_date='16 January, 2021'
-          nques={40}
-        />
-        <Exam />
-        <Exam />
-        <Exam />
+      {
+      examList.map((idi) => (
+        <Exam id={idi} examID={idi} />
+      ))
+      }
       </div>
     );
   } else if (showContent === "profile") {
@@ -85,7 +106,9 @@ function Dashboard() {
     content = <Settings />;
   }
 
-  if (isLoaded) {
+
+  //This is returned if the user isLoggedIn and the view isLoaded.
+  if(isLoaded && isLoggedIn){
     return (
       <div className='Dashboard'>
         {/* Drawer *********************/}
@@ -158,34 +181,29 @@ function Dashboard() {
         </div>
       </div>
     );
-  } else {
+  }
+
+
+
+//This is for the times when isLoaded is false.
+  if(!isLoaded){
+    return(
+      //We would replace this with the loading screen
+      <div>
+      <Spinner className='spinner'/>
+      </div>
+    );
+  }
+  
+  
+
+ //This is returned if isLoaded, but not isLoggedin. 
+  else {
     return <ErrorPage text="You're not logged in" />;
   }
+
+
+
 }
 
 export default Dashboard;
-
-/*
-1. fixed the drawer to the left with a width of 22.5rem/225px.
-2. The Exam will come from Dashboard-exam.js which will get data from the api
-*/
-
-/*
-content = {listArr.length === 0 ? 
-(<div className='no-exam'>
-  <h3>
-    No exam was created. Create a new exam.
-  </h3>
-</div>) : 
-(<div>
-  {listArr.map(el => {
-    <Exam 
-    key={el.id}
-      title={el.title}
-    created_date={el.date}
-    nques={el.amount}/>
-  })}
-  
-</div>)} 
-
-*/

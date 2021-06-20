@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./LoginPage.css";
 import Cookies from 'universal-cookie';
 import InputBase from "@material-ui/core/InputBase";
@@ -6,8 +6,9 @@ import { login, register } from "./api";
 
 import Spinner from "./Spinner"
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import {getIsLoggedIn} from './api';
 
 import logo from './mcqappAvatar-01.png';
 
@@ -19,38 +20,35 @@ import logo from './mcqappAvatar-01.png';
 3. all the elements inside the form has some margin & padding.
 */
 function LoginPage() {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailCN, setEmailCN] = useState("id_text");
   const [pwCN, setPWCN] = useState("id_text");
 
-  const [spinnerVisibility, setSpinnerVisibility] = useState(false);
+  const [spinnerClassName, setSpinnerClassName] = useState("spinner");
   const [loginErrorVisibility, setLoginErrorVisibility] = useState("message-invisible");
+  const [mainDivClassname, setMainDivClassname] = useState("LoginPage")
   const [errorMessage, setErrorMessage] = useState();
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  const dispatch = useDispatch();
+  useEffect( () => {
+    async function onInnitialLoad() {
+      var tempIsLoggedin = await getIsLoggedIn();
+      setIsLoggedIn(tempIsLoggedin);
+      setIsLoaded(true);
+  } onInnitialLoad();
+} , []);
 
   let history = useHistory();
 
-
   async function processLogin() {
     //Do Some email validation
-    setSpinnerVisibility(true);
+    toggleSpinner();
     var session_token = await login(email, password);
-    if(session_token){
-      var action = {
-        'type' : 'ADD_SESSION_TOKEN',
-        'value' : session_token
-      }
-      dispatch(action);
-      action = {
-        'type' : "ADD_IS_LOGGED_IN",
-        'value' : true
-      }
-      dispatch(action);
-      var cookie = new Cookies();
-      cookie.set('session_token', session_token);
+    if(session_token){      
       history.push(
         {
           pathname : "/dashboard",
@@ -67,6 +65,7 @@ function LoginPage() {
 
   async function processRegister() {
 
+    toggleSpinner();
     //Do some email validation
     var user = await register(email, password);
     if(user.success){
@@ -78,24 +77,29 @@ function LoginPage() {
     
   }
 
-  function startSpinner(){
-    //Start the spinner
+  function toggleSpinner(){
+    spinnerClassName=='spinner'?setSpinnerClassName('spinner-active'):setSpinnerClassName('spinner');
+    mainDivClassname=='LoginPage'?setMainDivClassname('LoginPage-blurred'):setMainDivClassname('LoginPage');
   }
 
   function ShowMessage(message){
+    setSpinnerClassName('spinner');
+    setMainDivClassname('LoginPage');
+
     setErrorMessage(message);
-    setSpinnerVisibility(false);
     setLoginErrorVisibility('message-visible');
   }
 
-  return (
-    <div className='LoginPage'>
-      <form className='LoginForm'>
-        <img
+  if(!isLoggedIn && isLoaded) return (      
+    <div>
+      <div className={spinnerClassName}><Spinner/></div>
+      <div className={mainDivClassname}>
+        <form className='LoginForm'>
+          <img
           className='LoginForm-avatar'
           src={logo}
           alt='Login Avatar'
-        />
+          />
         <div className={loginErrorVisibility}>
           {errorMessage}
         </div>
@@ -127,8 +131,34 @@ function LoginPage() {
           Register
         </button>
       </form>
+
+    </div>
     </div>
   );
+  if(isLoaded && isLoggedIn){
+    history.push(
+      {
+        pathname : "/dashboard",
+        isLoggedIn : true,
+      }
+    );
+    return (
+      <div>
+      <Spinner className='loading'/>
+    </div>
+    );
+  }
+
+  //This else statement runs if user is logged in (authenticated via cookie)
+  else{
+    return (
+      <div>
+        <Spinner className='loading'/>
+      </div>
+      
+      
+    );
+  }
 }
 
 export default LoginPage;
